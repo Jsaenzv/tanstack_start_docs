@@ -1,0 +1,223 @@
+---
+title: Semantics
+description: Giving Meaning to Your HTML
+---
+
+You've learned about HTML [elements](./elements) and how to [structure](./structure) your document.
+Now, let's talk about _semantics_ - one of the most important concepts in modern HTML.
+Semantic HTML is about using HTML elements to describe the _meaning_ of your content, not just its appearance.
+
+## Definition
+
+Semantic HTML means using HTML elements for their intended purpose, based on what they _represent_, not just how they look by default.
+It's about choosing the _right_ element for the job, even if a different element might look the same visually (before you add CSS).
+
+For example, you _could_ make any text bold by wrapping it in a `<div>` and applying CSS.
+But if that text is _strongly important_, you should use the `<strong>` element instead.
+`<strong>` is semantically correct - it conveys the _meaning_ of strong importance.
+
+## Benefits
+
+There are several _huge_ benefits to using semantic HTML:
+
+1.  **Accessibility:** This is the most important reason.
+  Screen readers (used by visually impaired users) rely heavily on semantic HTML to understand the structure and meaning of your content.
+  If you use elements incorrectly, screen readers might misinterpret your page, making it difficult or impossible for users to navigate and understand.
+  For example, a screen reader knows that an `<h1>` is a main heading and can announce it as such, helping users understand the page's organization.
+2.  **SEO (Search Engine Optimization):** Search engines (like Google) also use semantic HTML to understand the content and relevance of your web pages.
+  Using elements correctly can improve your search engine rankings.
+  For instance, Google will give more weight to text within an `<h1>` than text within a plain `<div>`.
+3.  **Readability and Maintainability:** Semantic HTML makes your code easier to read, understand, and maintain.
+  When you see a `<nav>` element, you immediately know it contains navigation links.
+  If you just saw a bunch of `<div>` elements, it would be much harder to figure out what's going on.
+  This is a big win for you and anyone else who works on your code.
+4.  **Code Reusability:** Semantic HTML promotes more consistent and reusable code.
+  If you consistently use elements correctly, it's easier to apply CSS styles and JavaScript behavior in a predictable way.
+5.  **Future-Proofing:** Browsers and web standards evolve.
+  Semantic HTML is more likely to be interpreted correctly by future browsers and technologies.
+
+## Common Semantic Elements
+
+HTML5 introduced a number of semantic elements that greatly improve the ability to structure web pages meaningfully.
+Here are some of the most important ones:
+
+- **`<header>`:** Represents introductory content for a section or the entire page.
+  Often contains a heading, logo, navigation, or search form.
+  You can have multiple `<header>` elements on a page (e.g., one for the main page header and one for each article).
+
+```html
+<header>
+  <h1>My Website</h1>
+  <nav>...</nav>
+</header>
+```
+
+- **`<nav>`:** Represents a section containing navigation links.
+  This could be the main site navigation, a table of contents, or a set of related links within an article.
+
+```html
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+```
+
+- **`<main>`:** Represents the main content of the document.
+  There should only be _one_ `<main>` element per page.
+  It helps screen readers and search engines quickly identify the primary content.
+
+```html
+<main>
+  <article>...</article>
+  <article>...</article>
+</main>
+```
+
+- **`<article>`:** Represents a self-contained composition within a document, page, application, or site, which is intended to be independently distributable or reusable, e.g., a blog post, news article, forum post, or product listing.
+
+```html
+<article>
+  <h2>Article Title</h2>
+  <p>Article content...</p>
+</article>
+```
+
+- **`<aside>`:** Represents content that is tangentially related to the content around it.
+  Often used for sidebars, pull quotes, advertising, or groups of navigation links.
+
+```html
+<aside>
+  <h3>Related Links</h3>
+  <ul>
+    ...
+  </ul>
+</aside>
+```
+
+- **`<footer>`:** Represents a footer for a section or the entire page.
+  Typically contains information about the author, copyright, related links, or contact information.
+  You can have multiple `<footer>` elements on a page.
+
+```html
+<footer>
+  <p>&copy; 2023 My Website</p>
+</footer>
+```
+
+- **`<section>`:** Represents a thematic grouping of content, typically with a heading.
+  Use sections to break up your content into logical chunks.
+  Don't use `<section>` if there is not a natural heading for it.
+
+```html
+<section>
+  <h2>Section Title</h2>
+  <p>...</p>
+  <p>...</p>
+</section>
+```
+
+- **`<figure>` and `<figcaption>`:** Used to encapsulate a media element (like an image, video, or code snippet) and its caption.
+
+```html
+<figure>
+  <img src="image.jpg" alt="Description" />
+  <figcaption>Caption for the image</figcaption>
+</figure>
+```
+
+- **`<time>`:** Represents a specific time or date.
+
+```html
+<time datetime="2023-10-27">October 27, 2023</time>
+```
+
+- **`<mark>`:** Represents a run of text in one document marked or highlighted for reference purposes
+
+```html
+<p>Search results for <mark>highlighted text</mark>.</p>
+```
+
+## Comparison
+
+Here's a table summarizing the difference between some common semantic and non-semantic elements:
+
+| Semantic Element | Non-Semantic Equivalent | Description                                                                    |
+| ---------------- | ----------------------- | ------------------------------------------------------------------------------ |
+| `<header>`       | `<div>`                 | Introductory content for a section or page.                                    |
+| `<nav>`          | `<div>`                 | Navigation links.                                                              |
+| `<main>`         | `<div>`                 | The main content of the document.                                              |
+| `<article>`      | `<div>`                 | A self-contained composition (e.g., blog post).                                |
+| `<aside>`        | `<div>`                 | Tangentially related content (e.g., sidebar).                                  |
+| `<footer>`       | `<div>`                 | Footer for a section or page.                                                  |
+| `<strong>`       | `<b>`                   | Strong importance (usually displayed as bold). `<b>` is purely presentational. |
+| `<em>`           | `<i>`                   | Emphasis (usually displayed as italics). `<i>` is purely presentational.       |
+| `<section>`      | `<div>`                 | Thematic group of content.                                                     |
+
+**Key takeaway:** Avoid using `<div>` and `<span>` as your primary structuring elements.
+  Use them only when no other semantic element is appropriate.
+  `<div>` is a generic block-level container, and `<span>` is a generic inline container.
+  They have _no_ semantic meaning.
+
+## A Semantic Example
+
+```html title="index.html"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Semantic Web Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>My Awesome Blog</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <h2>My First Blog Post</h2>
+        <p>Published on <time datetime="2023-10-27">October 27, 2023</time></p>
+        <p>
+          This is the content of my first blog post. It's
+          <strong>very important</strong>!
+        </p>
+        <figure>
+          <img src="image.jpg" alt="A relevant image" />
+          <figcaption>Caption for the image</figcaption>
+        </figure>
+        <section>
+          <h2>First Section</h2>
+          <p>Content of section 1.</p>
+        </section>
+      </article>
+
+      <aside>
+        <h3>Recent Posts</h3>
+        <ul>
+          <li><a href="#">Post 1</a></li>
+          <li><a href="#">Post 2</a></li>
+        </ul>
+      </aside>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 My Blog</p>
+    </footer>
+  </body>
+</html>
+```
+
+This example uses semantic elements throughout, making the code more meaningful, accessible, and SEO-friendly. It's a much better approach than using generic `<div>` and `<span>` elements for everything.
+
+Semantic HTML is a cornerstone of good web development. By using elements for their intended purposes, you create websites that are more accessible, maintainable, and perform better in search engines. It's a win-win-win situation! Always prioritize semantic correctness when writing your HTML.

@@ -1,0 +1,63 @@
+---
+title: Go (Golang)
+description: Google's Efficient and Concurrent Language
+---
+
+Go, also known as Golang, is a statically typed, compiled programming language designed at Google.
+It emphasizes simplicity, efficiency, and concurrency, making it a compelling choice for building scalable and performant back-end systems.
+
+## Why Go for Back-End?
+
+- **Performance:** Go is a compiled language, resulting in fast execution speeds and efficient resource usage.
+- **Concurrency:** Go's built-in concurrency features (goroutines and channels) make it easy to write highly concurrent and parallel applications, ideal for handling large numbers of requests.
+- **Simplicity:** Go's design emphasizes simplicity and readability, resulting in code that is easy to understand and maintain.
+- **Strong Standard Library:** Go has a comprehensive standard library that provides a wide range of functionality, reducing the need for external dependencies.
+- **Cross-Compilation:** Go supports cross-compilation, allowing you to build executables for different operating systems and architectures from a single codebase.
+
+## Key Features
+
+- **Statically Typed:** Go is statically typed, which allows the compiler to catch type errors at compile time, improving code reliability.
+- **Garbage Collection:** Go has automatic garbage collection, simplifying memory management.
+- **Concurrency with Goroutines and Channels:** Goroutines are lightweight, independently executing functions, and channels provide a mechanism for goroutines to communicate and synchronize.
+- **Interfaces:** Go supports interfaces, which define a set of methods that a type must implement, enabling polymorphism and code reusability.
+- **Fast Compilation:** Go code compiles very quickly, improving developer productivity.
+
+## Popular Go Web Frameworks
+
+- **Gin:** A high-performance microframework inspired by Martini, designed for building APIs and web applications.
+- **Echo:** Another high-performance framework known for its simplicity and scalability.
+- **Beego:** A full-featured framework that provides a wide range of features, including an ORM, session management, and caching.
+
+---
+
+Here's a basic example of how to create an HTTP server using Go's standard library:
+
+```go title="Example: Simple Go HTTP Server"
+package main
+
+import (
+    "fmt"
+    "net/http"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "Hello, World!")
+}
+
+func main() {
+    http.HandleFunc("/", handler)
+    fmt.Println("Server listening on port 8080")
+    http.ListenAndServe(":8080", nil)
+}
+```
+
+This code creates an HTTP server that listens on port 8080 and responds with "Hello, World!" when accessed in a browser.
+
+## Downsides
+
+- **Error Handling:** Error handling in Go can be verbose, requiring you to explicitly check for errors after each function call.
+- **Lack of Generics (Prior to Go 1.18):** Before the introduction of generics in Go 1.18, the lack of generics made it more difficult to write reusable code for different types.
+Now you can use Generic programming.
+
+Go is a powerful and efficient language for building scalable back-end systems.
+Its concurrency features, performance, and simplicity make it a popular choice for many developers, particularly for building cloud-native applications and microservices.

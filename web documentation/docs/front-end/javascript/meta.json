@@ -1,0 +1,13 @@
+{
+  "icon": "ScrollText",
+  "pages": [
+    "basics",
+    "functions",
+    "dom",
+    "events",
+    "json",
+    "async-await",
+    "frameworks",
+    "..."
+  ]
+}

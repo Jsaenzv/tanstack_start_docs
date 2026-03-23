@@ -1,0 +1,231 @@
+---
+title: Elements
+description: Diving Deeper into HTML Tags
+---
+
+In the [HTML introduction](../html), you learned that HTML uses tags to structure content.
+Now, let's get into the specifics of those tags - the **elements** that make up every web page.
+Think of them as the individual bricks that, when put together, build a complete structure.
+
+## Anatomy of an HTML Element
+
+Let's revisit the basic structure.
+Most HTML elements have three parts:
+
+1.  **Opening Tag:** This marks the beginning of the element.
+  It's enclosed in angle brackets (`<` and `>`) and contains the element's name (e.g., `<p>`, `<h1>`, `<a>`).
+2.  **Content:** This is the actual stuff that the element contains.
+  It could be text, other HTML elements, or a combination of both.
+3.  **Closing Tag:** This marks the end of the element.
+  It's identical to the opening tag, but with a forward slash (`/`) before the element name (e.g., `</p>`, `</h1>`, `</a>`).
+
+Here's the paragraph example again:
+
+```html
+<p>This is a paragraph of text.</p>
+```
+
+`<p>` is the opening tag, "This is a paragraph of text." is the content, and `</p>` is the closing tag.
+Simple, right?
+
+## Common HTML Elements: Your Toolbox
+
+There are _many_ different HTML elements, each with a specific purpose.
+You don't need to memorize them all at once! We'll focus on the most common and important ones, the ones you'll use constantly.
+You can categorize HTML elements.
+
+### Text Content
+
+- **`<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`:** These are heading elements, used to create headings of different levels.
+  `<h1>` is the most important (largest), and `<h6>` is the least important (smallest). Use them hierarchically to structure your content.
+
+```html
+<h1>Main Heading</h1>
+<h2>Subheading</h2>
+<h3>Section Heading</h3>
+```
+
+- **`<p>`:** The paragraph element.
+  Use it for blocks of text.
+  Browsers automatically add some spacing between paragraphs.
+
+```html
+<p>This is the first paragraph.</p>
+<p>This is the second paragraph.</p>
+```
+
+- **`<span>`:** An inline element used to group text or other inline elements _without_ adding any line breaks or inherent styling.
+  It's often used with CSS to style specific parts of a text.
+
+```html
+<p>This is a sentence with a <span style="color: blue;">blue word</span>.</p>
+```
+
+- **`<br>`:** A self-closing element that inserts a line break.
+  Use this sparingly; often, other elements (like `<p>`) are better for structuring content.
+
+```html
+<p>This is the first line.<br />This is the second line.</p>
+```
+
+### Grouping Content
+
+- **`<div>`:** A block-level element used to group other elements together.
+  It doesn't have any inherent styling or meaning on its own, but it's very useful for structuring your layout and applying CSS styles.
+  Think of it as a generic container.
+
+```html
+<div>
+  <h1>Heading</h1>
+  <p>Paragraph of text.</p>
+</div>
+```
+
+- **`<header>`, `<nav>`, `<main>`, `<article>`, `<aside>`, `<footer>`:** These are _semantic_ elements, meaning they have specific meanings that describe the content they contain.
+  They help structure your page logically and improve accessibility and SEO. We'll cover these in more detail in the [Semantics](./semantics) section.
+
+### Lists
+
+- **`<ul>`:** Creates an unordered list (a bulleted list).
+- **`<ol>`:** Creates an ordered list (a numbered list).
+- **`<li>`:** Represents a list item. Used inside `<ul>` or `<ol>`.
+
+```html
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+<ol>
+  <li>First step</li>
+  <li>Second step</li>
+  <li>Third step</li>
+</ol>
+```
+
+### Links and Images
+
+- **`<a>`:** The anchor element.
+  Used to create hyperlinks to other web pages, files, email addresses, or locations within the same page.
+  The `href` attribute specifies the destination of the link.
+
+```html
+<a href="https://www.example.com">Visit Example Website</a>
+<a href="page2.html">Go to Page 2</a>
+<a href="#section2">Jump to Section 2</a>
+```
+
+- **`<img>`:** A self-closing element used to embed images.
+  The `src` attribute specifies the URL of the image, and the `alt` attribute provides alternative text for screen readers and if the image fails to load.
+
+```html
+<img src="image.jpg" alt="Description of the image" />
+```
+
+### Forms
+
+- **`<form>`:** Creates a form for user input.
+- **`<input>`:** A versatile element used for various types of input fields (text, password, email, checkbox, radio button, etc.).
+  The `type` attribute specifies the input type.
+- **`<textarea>`:** Creates a multi-line text input field.
+- **`<button>`:** Creates a clickable button.
+- **`<select>`:** Creates a dropdown list.
+- **`<option>`:** Represents an option within a `<select>` element.
+
+```html
+<form>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" /><br /><br />
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" /><br /><br />
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message"></textarea><br /><br />
+
+  <input type="submit" value="Submit" />
+</form>
+```
+
+### Tables
+
+- **`<table>`**: Creates a table
+- **`<tr>`**: Table row
+- **`<th>`**: Table header
+- **`<td>`**: Table data cell
+- **`<thead>`**: Table head
+- **`<tbody>`**: Table body
+- **`<tfoot>`**: Table foot
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>Header content 1</th>
+      <th>Header content 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Body content 1</td>
+      <td>Body content 2</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Embedded Content
+
+- **`<iframe>`**: Creates an embedded frame that allows you to display content from another webpage within your current page.
+  This element acts like a window to external content, letting you incorporate things like YouTube videos, Google Maps, or other web pages directly into your site without requiring users to navigate away.
+  The `src` attribute specifies the URL of the content to embed.
+
+```html
+<iframe src="https://www.example.com"></iframe>
+```
+
+## Nesting Elements
+
+You can _nest_ HTML elements inside other elements.
+This is how you create complex structures.
+For example, you might put a list (`<ul>`) inside a `<div>`, or put a `<strong>` element inside a `<p>`.
+
+```html
+<div>
+  <h1>My List</h1>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2 <strong>(Important!)</strong></li>
+  </ul>
+</div>
+```
+
+_Indentation_ is your friend! Use it to make your nested HTML code easy to read and understand. \
+The browser doesn't care about indentation, but _you_ will, and so will anyone else who looks at your code.
+
+## Block-Level vs. Inline Elements
+
+HTML elements are generally categorized as either _block-level_ or _inline_:
+
+- **Block-level elements:** Always start on a new line and take up the full width available.
+  Examples: `<h1>`, `<p>`, `<div>`, `<ul>`, `<form>`.
+- **Inline elements:** Do _not_ start on a new line and only take up as much width as necessary.
+  Examples: `<span>`, `<a>`, `<img>`, `<strong>`, `<em>`.
+
+You can change the default display behavior of elements using CSS (we'll get to that later!), but understanding the default behavior is important.
+
+## Empty Elements (Self-Closing Tags)
+
+As you saw with `<img>` and `<br>`, some elements don't have any content between an opening and closing tag.
+These are called _empty elements_ (or _void elements_ or _self-closing tags_).
+They have a single tag that acts as both the opening and closing tag.
+You can optionally add a forward slash before the closing angle bracket (e.g., `<img src="..." />`), but it's not required in HTML5.
+
+## Keep Learning and Experimenting!
+
+This is just a starting point.
+There are many more HTML elements to discover, and the best way to learn is by experimenting.
+Try creating different elements, nesting them, and seeing how they look in your browser.
+Don't be afraid to make mistakes - that's how you learn! And use online resources like the [MDN Web Docs](https://developer.mozilla.org) to look up specific elements and their attributes.
+It's your best friend for web development.

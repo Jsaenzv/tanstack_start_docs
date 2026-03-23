@@ -1,0 +1,146 @@
+---
+title: JSON
+description: Data Interchange Format
+---
+
+You've learned how to manipulate the DOM and respond to user events.
+Now, let's explore how JavaScript can communicate with servers to fetch and send data.
+**JSON (JavaScript Object Notation)** is a lightweight data-interchange format that is widely used for transmitting data between a server and a web application.
+It's human-readable, easy to parse, and supported by most programming languages.
+
+## What is JSON?
+
+JSON is a text-based data format that uses JavaScript object syntax to represent data.
+Despite its name, JSON is language-independent and can be used with any programming language.
+
+Think of JSON as a way to serialize (convert) data into a string format that can be easily transmitted over the internet and then deserialized (converted back) into a usable data structure by the receiving application.
+
+## JSON Syntax
+
+JSON data is written as key-value pairs, similar to JavaScript objects:
+
+- Data is represented in name/value pairs
+- Data is separated by commas
+- Curly braces `{}` hold objects
+- Square brackets `[]` hold arrays
+
+Here's an example of a JSON object:
+
+```json
+{
+  "name": "John Doe",
+  "age": 30,
+  "city": "New York",
+  "skills": ["JavaScript", "HTML", "CSS"]
+}
+```
+
+## JSON Data Types
+
+JSON supports the following data types:
+
+- `string`: Textual data enclosed in double quotes.
+- `number`: Numeric data (integers or floating-point numbers).
+- `boolean`: `true` or `false` values.
+- `null`: Represents the intentional absence of a value.
+- `object`: A collection of key-value pairs enclosed in curly braces `{}`.
+- `array`: An ordered list of values enclosed in square brackets `[]`.
+
+## JSON vs. JavaScript Objects
+
+JSON syntax is very similar to JavaScript object syntax, but there are some important differences:
+
+- JSON keys must be enclosed in double quotes.
+- JSON doesn't support JavaScript-specific data types like `undefined`, `Date`, or functions.
+- JSON is a data format, while JavaScript objects are data structures.
+
+## Using JSON in JavaScript
+
+JavaScript provides built-in methods for working with JSON data:
+
+- **`JSON.stringify(object)`:** Converts a JavaScript object into a JSON string.
+  This is useful for sending data to a server.
+
+```javascript
+const person = {
+  name: "Alice",
+  age: 25,
+};
+
+const jsonString = JSON.stringify(person);
+console.log(jsonString); // Output: {"name":"Alice","age":25}
+```
+
+- **`JSON.parse(jsonString)`:** Parses a JSON string and converts it into a JavaScript object.
+  This is useful for receiving data from a server.
+
+```javascript
+const jsonString2 = '{"name":"Bob","age":30}';
+const person2 = JSON.parse(jsonString2);
+console.log(person2.name); // Output: Bob
+console.log(person2.age); // Output: 30
+```
+
+## Fetching JSON Data from a Server
+
+The `fetch()` API is a modern way to make HTTP requests in JavaScript.
+You can use `fetch()` to retrieve JSON data from a server:
+
+```javascript
+fetch("https://jsonplaceholder.typicode.com/users/1")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data.name);
+    console.log(data.email);
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
+```
+
+This code fetches user data from the JSONPlaceholder API (a fake online REST API for testing and prototyping) and logs the user's name and email to the console.
+
+## Sending JSON Data to a Server
+
+You can also use `fetch()` to send JSON data to a server:
+
+```javascript
+const newUser = {
+  name: "Charlie",
+  age: 35,
+};
+
+fetch("https://jsonplaceholder.typicode.com/users", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(newUser),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("New user created:", data);
+  })
+  .catch((error) => {
+    console.error("Error creating user:", error);
+  });
+```
+
+This code sends a new user object to the JSONPlaceholder API using the `POST` method.
+The `Content-Type` header is set to `"application/json"` to indicate that the request body is in JSON format.
+
+## Why Use JSON?
+
+JSON is a widely used data format for web applications because it is:
+
+- **Lightweight:** JSON data is compact and easy to transmit over the internet.
+- **Human-Readable:** JSON data is relatively easy to read and understand.
+- **Easy to Parse:** JSON data can be easily parsed by most programming languages.
+- **Widely Supported:** JSON is supported by most web browsers and server-side technologies.
+
+## Practice and Explore
+
+JSON is an essential skill for any web developer.
+Practice working with JSON data in JavaScript.
+Experiment with `JSON.stringify()`, `JSON.parse()`, and the `fetch()` API.
+The more you use JSON, the better you'll understand how to communicate with servers and build data-driven web applications.

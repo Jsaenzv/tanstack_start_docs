@@ -1,0 +1,139 @@
+---
+title: Caching Strategies
+description: Boost performance and reduce load.
+icon: DatabaseZap
+---
+
+You've learned how to build applications, and structure them, but now let's focus on making them _fast_ and efficient.
+Caching is a crucial technique for improving application performance and reducing server load.
+By storing frequently accessed data in a cache, you can avoid repeatedly retrieving it from slower sources like databases or external APIs.
+This page explores various caching strategies and techniques.
+
+## What is Caching?
+
+Caching is the process of storing data in a temporary storage location (the cache) so that future requests for that data can be served more quickly.
+When a client requests data, the application first checks the cache.
+If the data is found in the cache (a "cache hit"), it's returned directly to the client, bypassing the need to access the original source.
+If the data is not found in the cache (a "cache miss"), the application retrieves it from the original source, stores it in the cache, and then returns it to the client.
+
+## Benefits of Caching
+
+- **Improved Performance:** Caching significantly reduces response times, leading to a faster and more responsive user experience.
+- **Reduced Server Load:** By serving requests from the cache, you reduce the load on your servers, allowing them to handle more traffic.
+- **Lower Latency:** Serving data from a cache that's closer to the user (e.g., a CDN) can reduce latency.
+- **Increased Availability:** Caching can improve application availability by allowing it to serve requests even when the original data source is unavailable.
+- **Reduced Costs:** By reducing server load and bandwidth usage, caching can lower your infrastructure costs.
+
+## Types of Caching
+
+There are several different types of caching, each with its own characteristics and use cases:
+
+### 1. Browser Caching
+
+Browsers automatically cache static assets (e.g., images, CSS files, JavaScript files) to reduce the number of requests to the server.
+You can control browser caching behavior using HTTP headers such as `Cache-Control`, `Expires`, and `ETag`.
+
+**Example (HTTP Response Headers):**
+
+```
+Cache-Control: public, max-age=31536000
+Expires: Thu, 31 Dec 2024 20:00:00 GMT
+```
+
+This tells the browser to cache the resource for one year.
+
+### 2. Server-Side Caching
+
+Server-side caching involves storing data on the server itself, typically in memory or on disk.
+This can be used to cache frequently accessed data from databases, external APIs, or other sources.
+
+- **In-Memory Caching:** Uses memory (RAM) for fast access.
+  Suitable for frequently accessed data that doesn't need to persist across server restarts.
+  Examples: Redis, Memcached.
+- **Disk-Based Caching:** Uses disk storage (SSD or HDD) for larger datasets that can't fit in memory.
+  Slower than in-memory caching but provides persistence.
+
+**Example (Node.js with Redis):**
+
+```javascript
+const redis = require("redis");
+const client = redis.createClient();
+
+async function getData(key) {
+  const cachedData = await client.get(key);
+  if (cachedData) {
+    return JSON.parse(cachedData);
+  } else {
+    const data = await fetchDataFromDatabase(key); // Assume this function fetches data from DB
+    await client.set(key, JSON.stringify(data), "EX", 3600); // Cache for 1 hour
+    return data;
+  }
+}
+```
+
+### 3. CDN (Content Delivery Network) Caching
+
+CDNs are distributed networks of servers located around the world.
+They cache static content (images, CSS, JavaScript) and deliver it to users from the server closest to them, reducing latency and improving performance.
+
+**How it works:**
+
+1. A user requests a resource (e.g., an image).
+2. The CDN checks if it has a cached copy of the resource in a server close to the user.
+3. If the resource is cached, the CDN serves it directly to the user.
+4. If the resource is not cached, the CDN retrieves it from the origin server, caches it, and then serves it to the user.
+
+**Popular CDNs:**
+
+- Cloudflare
+- Amazon CloudFront
+- Akamai
+
+### 4. Edge Caching
+
+Edge caching is similar to CDN caching, but it involves caching content at the "edge" of the network, closer to the user.
+This can be done using edge computing devices or specialized edge caching services.
+
+### 5. Object Caching
+
+Object caching involves storing the results of computationally expensive operations or frequently accessed objects in memory.
+Instead of recalculating or re-fetching the object every time it's needed, the application retrieves it from the cache.
+This is particularly useful for:
+
+- **Expensive Calculations:** Caching the result of complex calculations to avoid repeating them.
+- **Data Transformations:** Caching the output of data transformations or aggregations.
+- **Frequently Accessed Objects:** Caching frequently used objects to reduce database queries or API calls.
+
+Object caching can be implemented at various levels within an application's architecture, from caching individual function call results to caching entire data structures.
+Libraries such as memoize functions can be utilized for specific function result caching.
+
+## Caching Strategies
+
+Choosing the right caching strategy depends on your application's specific requirements and the nature of the data you're caching.
+Here are some common strategies:
+
+- **Cache-Aside:** The application first checks the cache.
+  If the data is not found, it retrieves it from the data source, stores it in the cache, and then returns it to the client.
+- **Cache-Aside with Expiration:** This is like the basic Cache-Aside, but with a TTL (Time To Live).
+- **Write-Through:** Data is written to both the cache and the data source simultaneously.
+  This ensures data consistency but can increase write latency.
+- **Write-Behind (Write-Back):** Data is written to the cache, and the data source is updated asynchronously.
+  This improves write performance but can introduce data inconsistencies.
+
+## Important Considerations
+
+- **Cache Invalidation:** Deciding when to remove or refresh data from the cache is crucial.
+  Stale data can lead to incorrect results.
+  - **Time-based invalidation:** Set a TTL (Time-To-Live) for cached data, after which it's automatically invalidated.
+  - **Event-based invalidation:** Invalidate the cache when the underlying data changes (e.g., when a database record is updated).
+  - **Manual Invalidation:** Sometimes, you need to manually invalidate the cache.
+- **Cache Consistency:** Ensure that the data in the cache is consistent with the data in the original source.
+- **Cache Size:** Allocate enough memory or storage for your cache to hold frequently accessed data.
+- **Cache Eviction Policies:** Define a policy for evicting data from the cache when it's full (e.g., Least Recently Used (LRU), Least Frequently Used (LFU)).
+- **Security:** Protect your cache from unauthorized access.
+- **Monitoring:** Monitor your cache's performance and effectiveness.
+  Track cache hit rates, eviction rates, and latency.
+
+Caching is a powerful tool for improving web application performance.
+By understanding the different types of caching and choosing the right strategies, you can significantly reduce server load, lower latency, and enhance the user experience.
+It is important to guarantee consistency and have an effective strategy of cache invalidation.

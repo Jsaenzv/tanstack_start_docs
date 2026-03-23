@@ -1,0 +1,45 @@
+---
+title: Core Responsibilities
+description: What Does Your Code Need to Handle?
+---
+
+Now that you've seen several popular server-side languages, let's zoom out and consider the common responsibilities that _all_ of these languages need to handle when building a back-end application.
+Regardless of whether you're writing Python, JavaScript, PHP, Ruby, or Go, your server-side code will typically be responsible for the following tasks:
+
+## Handling Incoming Requests
+
+At its heart, a server-side application must handle incoming requests. This involves listening for HTTP requests from clients (like web browsers or mobile apps) and parsing these requests to extract essential information such as the URL, request method (GET, POST, etc.), headers, and data within the request body. Different languages and frameworks offer varied tools and APIs to streamline this process.
+
+## Routing
+
+Once a request is received and parsed, the server needs to route it appropriately. Routing defines how URLs map to specific functions or handlers within your application's code. This includes defining routes for different URLs and request methods, as well as handling dynamic routes that contain variables or parameters.
+
+## Processing Data
+
+A significant portion of back-end code revolves around processing data. This includes validating data received from clients to ensure it conforms to expected formats and constraints. It also involves transforming data between different formats (e.g., JSON to XML) and performing calculations or business logic based on the data.
+
+## Interacting with Databases
+
+Most web applications rely on databases for persistent data storage. Server-side languages provide mechanisms to connect to various types of databases (relational, NoSQL, etc.), query data based on specific criteria, and update data by inserting, updating, or deleting records. Object-Relational Mappers (ORMs) can optionally be used to simplify database interactions by mapping database tables to objects within your code.
+
+## Generating Responses
+
+After processing a request, the server must generate a response to send back to the client. This involves constructing a well-formed HTTP response, including a status code (e.g., 200 OK, 404 Not Found) and appropriate headers. The data to be sent must be serialized into a suitable format for network transmission (e.g., JSON or XML). Additionally, templating engines can be used to dynamically generate HTML code for the response.
+
+## Handling Authentication and Authorization
+
+Security is a crucial aspect of web applications. Back-end code needs to handle user authentication by verifying user identities (e.g., using usernames and passwords). It also needs to manage user authorization, controlling access to resources based on user roles or permissions, and maintain user sessions across multiple requests.
+
+## Error Handling
+
+Robust error handling is essential for building reliable applications. This involves catching unexpected errors or exceptions that occur during code execution, logging these errors to a log file or monitoring system, and returning appropriate error responses to the client, including informative error messages.
+
+## Asynchronous Operations
+
+Many server-side tasks, such as database queries or network requests, are asynchronous. Server-side languages provide mechanisms for handling these operations efficiently without blocking the main thread. This can involve using threads or processes to handle long-running tasks in parallel, employing non-blocking I/O operations to handle multiple requests concurrently, and using promises or async/await syntax to simplify asynchronous code.
+
+## Monitoring and Logging
+
+Monitoring and logging are vital for tracking the health and performance of your application. This includes logging important events, such as user actions or system events, to a log file or monitoring system, as well as tracking key performance indicators (KPIs) like request latency, CPU usage, and memory usage.
+
+By understanding these core responsibilities, you can better appreciate the challenges and complexities of back-end development, regardless of the specific language or framework you choose.

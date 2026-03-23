@@ -1,0 +1,130 @@
+---
+title: Events
+description: Responding to User Interactions
+---
+
+You've learned how to access and manipulate HTML elements using the DOM.
+Now, let's make your web pages truly interactive by responding to user actions with **events**.
+Events are actions or occurrences that happen in the browser, such as button clicks, mouse movements, form submissions, and page loads.
+JavaScript allows you to "listen" for these events and execute code in response.
+
+## What are Events?
+
+Events are signals that are fired by the browser when something interesting happens.
+These signals can be triggered by user actions, such as:
+
+- Clicking a button
+- Moving the mouse
+- Typing in a text field
+- Submitting a form
+- Loading a page
+
+Events can also be triggered by the browser itself, such as:
+
+- The page finishing loading
+- An error occurring
+
+## Event Listeners
+
+To respond to an event, you need to attach an **event listener** to an HTML element.
+An event listener is a function that will be executed when a specific event occurs on that element.
+
+There are several ways to attach event listeners in JavaScript:
+
+### Inline Handlers (Not Recommended)
+
+You can add event handlers directly to HTML elements using event attributes:
+
+```html
+<button onclick="alert('Button clicked!')">Click Me</button>
+```
+
+However, this approach is generally _not_ recommended for standard HTML and JavaScript projects because it mixes HTML and JavaScript, making your code harder to maintain.
+This is different if you are using a framework like React, where these inline handlers are compiled and handled differently.
+
+### DOM Listeners (Recommended)
+
+The preferred way to attach event listeners is to use the `addEventListener()` method of the DOM element:
+
+```javascript
+const button = document.querySelector("button");
+
+button.addEventListener("click", function () {
+  alert("Button clicked!");
+});
+```
+
+The `addEventListener()` method takes two arguments:
+
+1.  The name of the event to listen for (e.g., `"click"`, `"mouseover"`, `"submit"`).
+2.  The function to be executed when the event occurs (the _event handler_).
+
+You can also use an arrow function as the event handler:
+
+```javascript
+const button2 = document.querySelector("#myButton");
+
+button2.addEventListener("click", () => {
+  console.log("Button 2 clicked!");
+});
+```
+
+### Removing Listeners
+
+You can remove an event listener using the `removeEventListener()` method:
+
+```javascript
+function handleClick() {
+  alert("Button clicked!");
+}
+
+const button3 = document.querySelector("#myButton");
+button3.addEventListener("click", handleClick);
+
+// Later, remove the event listener
+button3.removeEventListener("click", handleClick);
+```
+
+**Important:** You must pass the _same_ function reference to `removeEventListener()` that you passed to `addEventListener()` for it to work.
+This is why it's important to assign the event handler function to a variable.
+
+## Common Events
+
+Here are some of the most common events you'll use in JavaScript:
+
+- **`click`:** Occurs when the user clicks on an element.
+- **`mouseover`:** Occurs when the mouse pointer enters an element.
+- **`mouseout`:** Occurs when the mouse pointer leaves an element.
+- **`mousemove`:** Occurs when the mouse pointer is moving over an element.
+- **`keydown`:** Occurs when the user presses a key down.
+- **`keyup`:** Occurs when the user releases a key.
+- **`submit`:** Occurs when a form is submitted.
+- **`load`:** Occurs when the page or an element has finished loading.
+- **`DOMContentLoaded`:** Occurs when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading.
+  It is the preferred event to start adding event listeners.
+
+## The Event Object
+
+When an event occurs, the browser creates an **event object** and passes it as an argument to the event handler function.
+The event object contains information about the event, such as:
+
+- `target`: The element that triggered the event.
+- `type`: The type of event that occurred (e.g., `"click"`, `"mouseover"`).
+- `clientX` and `clientY`: The coordinates of the mouse pointer relative to the browser window.
+- `preventDefault()`: A method that prevents the default behavior of the event (e.g., preventing a form from submitting or a link from navigating).
+- `stopPropagation()`: A method that stops the event from bubbling up the DOM tree (more on this below).
+
+```javascript
+const button4 = document.querySelector("#myButton");
+
+button4.addEventListener("click", (event) => {
+  console.log("Event type:", event.type);
+  console.log("Target element:", event.target);
+});
+```
+
+## Practice and Explore
+
+Events are the key to creating interactive web pages.
+Practice attaching event listeners to different elements and responding to different events.
+The more you work with events, the better you'll understand how to create engaging and responsive user experiences.

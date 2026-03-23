@@ -1,0 +1,147 @@
+---
+title: Structure
+description: Building the Skeleton of Your Web Page
+---
+
+You've now learned about individual HTML [elements](./elements) - the building blocks of web pages.
+But just like a pile of bricks doesn't make a house, a bunch of HTML elements doesn't make a well-structured web page.
+This section is about how to combine those elements to create the overall _structure_ of your document - the skeleton that holds everything together.
+
+## The Basic HTML Document Structure
+
+Every HTML document should follow a basic structure.
+This structure provides essential information to the browser and helps organize your content.
+Here's the fundamental template:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Title</title>
+  </head>
+  <body>
+    <!-- Your page content goes here -->
+  </body>
+</html>
+```
+
+Let's break down each part:
+
+- **`<!DOCTYPE html>`:** This is the _doctype declaration_.
+  It's _not_ an HTML element, but a special instruction that tells the browser which version of HTML you're using.
+  In this case, it tells the browser to use HTML5 (the latest and greatest version).
+  Always include this at the very top of your HTML documents.
+- **`<html>`:** This is the _root element_ of your HTML document.
+  All other elements are contained within this element.
+  - **`lang` attribute:** We specify the principal language for this document.
+- **`<head>`:** This section contains _metadata_ about the document - information that is _not_ displayed on the page itself, but is used by the browser, search engines, and other services.
+  Common elements inside `<head>` include:
+  - **`<meta charset="UTF-8">`:** Specifies the character encoding for the document.
+    UTF-8 is the most common and recommended encoding, as it supports a wide range of characters.
+  - **`<meta name="viewport" content="width=device-width, initial-scale=1.0">`:** This is _crucially important_ for responsive design (making your website look good on different screen sizes).
+    It tells the browser how to control the page's dimensions and scaling.
+    Include this in all your web pages.
+  - **`<title>`:** Specifies the title of the web page.
+    This is displayed in the browser's title bar or tab, and it's also used by search engines.
+    _Every_ HTML document should have a `<title>` element.
+  - **`<link>`:** Used to link to external resources, most commonly CSS stylesheets.
+    ```html
+    <link rel="stylesheet" href="style.css" />
+    ```
+  - **`<style>`:** Allows you to embed CSS directly within your HTML document (though it's generally better to use external stylesheets).
+  - **`<script>`:** Used to include JavaScript code (either inline or by linking to an external file).
+    Often placed at the end of the `<body>` for performance reasons.
+  - **`<meta>`:** Can contains other kind of metadata like: `description`, `keywords`, `author`...
+
+- **`<body>`:** This section contains the _visible_ content of the web page - everything that users will see and interact with.
+  This includes text, images, links, forms, and all the other elements you learned about in the previous section.
+
+## Structuring Content Within the `<body>`
+
+The `<body>` element is where you build the actual content of your page.
+You use a combination of block-level and inline elements to create the structure.
+Here are some key principles:
+
+- **Use Headings Hierarchically:** Use `<h1>` through `<h6>` to structure your content logically.
+  Think of it like an outline:
+  - `<h1>`: The main heading of the page (usually only one per page).
+  - `<h2>`: Major subheadings.
+  - `<h3>`: Subheadings within `<h2>` sections.
+  - And so on...
+- **Use Paragraphs for Text:** Wrap blocks of text in `<p>` elements.
+- **Group Related Elements:** Use `<div>` elements to group related elements together, creating logical sections within your page.
+  You can then use CSS to style these sections.
+- **Use Semantic Elements:** Whenever possible, use _semantic_ HTML elements (like `<header>`, `<nav>`, `<main>`, `<article>`, `<aside>`, `<footer>`) to give meaning to your content.
+  We'll cover these in detail in the [Semantics](./semantics) page.
+  These are better than using just `<div>` elements everywhere.
+
+## Example: A Simple Web Page Structure
+
+Here's an example of how you might structure a simple web page:
+
+```html title="index.html"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Awesome Web Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to My Website</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <h2>About Me</h2>
+        <p>I'm a web developer passionate about...</p>
+        <img src="me.jpg" alt="A picture of me" />
+      </article>
+
+      <aside>
+        <h3>Recent Posts</h3>
+        <ul>
+          <li><a href="#">Post 1</a></li>
+          <li><a href="#">Post 2</a></li>
+        </ul>
+      </aside>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 My Website</p>
+    </footer>
+  </body>
+</html>
+```
+
+This example demonstrates:
+
+- The basic HTML document structure.
+- The use of semantic elements (`<header>`, `<nav>`, `<main>`, `<article>`, `<aside>`, `<footer>`).
+- Headings, paragraphs, lists, links, and an image.
+- Indentation to make the code readable.
+- Linking to an external CSS file (`style.css`).
+
+## The Importance of Good Structure
+
+A well-structured HTML document is:
+
+- **Easier to Read and Maintain:** Clean, indented code with semantic elements is much easier to understand and modify than a jumbled mess of `<div>` elements.
+- **Better for Accessibility:** Screen readers and other assistive technologies rely on the structure of your HTML to understand and present the content to users with disabilities.
+- **Improved SEO (Search Engine Optimization):** Search engines use the structure of your HTML to understand the content and relevance of your page.
+- **Foundation for CSS and JavaScript:** A well-structured document makes it much easier to apply CSS styles and JavaScript behavior to specific elements or sections of your page.
+
+In essence, a well-structured HTML document is the foundation of a well-built website.
+It's like the blueprints for your digital house - get it right, and everything else will be much easier.
+Don't just throw elements onto the page randomly; think about the overall structure and how the different parts relate to each other.

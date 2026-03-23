@@ -1,0 +1,6 @@
+{
+  "title": "IP Addresses and DNS",
+  "description": "",
+  "icon": "MapPinHouse",
+  "pages": ["ip", "dns", "..."]
+}

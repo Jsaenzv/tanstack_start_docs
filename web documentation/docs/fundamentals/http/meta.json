@@ -1,0 +1,5 @@
+{
+  "title": "HTTP",
+  "icon": "ShieldCheck",
+  "pages": ["request", "response", "headers", "https", "..."]
+}

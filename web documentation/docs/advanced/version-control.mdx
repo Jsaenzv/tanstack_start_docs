@@ -1,0 +1,109 @@
+---
+title: Git Version Control
+description: Track Changes and Collaborate
+icon: GitBranch
+---
+
+You've built applications, packaged them with Docker, and deployed them to the cloud.
+Now that you have a delivery method, let's ensure you can effectively manage your codebase, collaborate with others, and track changes with **version control**, specifically using Git.
+Version control is an essential tool for any software developer, enabling you to work on projects of any size and complexity, alone or as part of a team.
+
+## What is Version Control?
+
+Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.
+It allows you to:
+
+- **Track Changes:** See exactly what was changed, when, and by whom.
+- **Revert to Previous Versions:** Undo mistakes or revert to a previous working state.
+- **Collaborate Effectively:** Work on the same codebase with multiple developers without conflicts.
+- **Experiment Safely:** Create branches to explore new ideas without affecting the main codebase.
+- **Manage Releases:** Tag specific versions of your code for releases.
+- **Provide an historical background of what you did with a project:** This is an excellent tool for documentation and accountability.
+
+Git is the most widely used version control system today.
+
+## Key Git Concepts
+
+- **Repository (Repo):** A directory containing all the project files and the entire history of changes.
+  It can be local (on your computer) or remote (hosted on a server like GitHub, GitLab, or Bitbucket).
+- **Commit:** A snapshot of the project at a specific point in time.
+  Each commit has a unique identifier and a message describing the changes.
+- **Branch:** An independent line of development.
+  Branches allow you to work on new features or bug fixes without affecting the main codebase.
+- **Merge:** The process of combining changes from one branch into another.
+- **Pull Request (Merge Request):** A request to merge changes from one branch into another, typically used for code review and collaboration.
+- **Remote:** A pointer to a remote repository, such as one hosted on GitHub.
+  This is typically called "origin" by default.
+- **Clone:** Copy a remote repository to your local machine.
+- **Fork:** Create a copy of an existing repository.
+- **Tag:** A pointer to a commit.
+  Usually used to flag a release.
+- **Head:** A pointer that shows the location of the current branch.
+
+## Basic Git Workflow
+
+Here's a common Git workflow:
+
+1.  **Initialize a Repository:** Create a new Git repository for your project using `git init`.
+2.  **Clone a Repository:** If the project is already in a remote repository, clone it to your local machine using `git clone <repository_url>`.
+3.  **Make Changes:** Modify files in your local repository.
+4.  **Stage Changes:** Add the changed files to the staging area using `git add <file>`.
+  Use `git add .` to stage all changed files in the current directory and its subdirectories.
+5.  **Commit Changes:** Create a commit with a descriptive message using `git commit -m "Your commit message"`.
+6.  **Create a Branch (Optional):** Create a new branch for your changes using `git branch <branch_name>` and switch to it using `git checkout <branch_name>`.
+  You can also use `git checkout -b <branch_name>` to create and switch to a new branch in one step.
+7.  **Push Changes (Optional):** Push your branch to a remote repository using `git push origin <branch_name>`.
+8.  **Create a Pull Request (Optional):** Create a pull request (or merge request) on the remote repository to merge your changes into the main branch.
+9.  **Merge Changes:** Merge your changes into the main branch (either locally or on the remote repository).
+10. **Pull Changes:** Regularly update your local repository with changes from the remote repository using `git pull origin <branch_name>`.
+
+## Common Git Commands
+
+Here are some of the most common Git commands:
+
+- **`git init`:** Initializes a new Git repository in the current directory.
+- **`git clone <repository_url>`:** Copies a remote repository to your local machine.
+- **`git add <file>`:** Adds a file to the staging area.
+- **`git commit -m "Your commit message"`:** Creates a commit with a descriptive message.
+- **`git status`:** Shows the status of the working directory and staging area.
+- **`git log`:** Shows the commit history.
+- **`git branch`:** Lists the local branches.
+- **`git checkout <branch_name>`:** Switches to the specified branch.
+- **`git merge <branch_name>`:** Merges the specified branch into the current branch.
+- **`git pull origin <branch_name>`:** Fetches changes from the remote repository and merges them into the current branch.
+- **`git push origin <branch_name>`:** Pushes changes from the local repository to the remote repository.
+- **`git remote add origin <repository_url>`:** Sets the remote repository URL.
+- **`.gitignore`:** A configuration file that indicates which files shouldn't be tracked.
+
+## Branching Strategies
+
+Effective use of branching is crucial for collaborative development.
+Here are some common branching strategies:
+
+- **Gitflow:** A complex branching model with separate branches for features, releases, and hotfixes.
+  Well-suited for projects with a strict release cycle.
+- **GitHub Flow:** A simpler branching model with a single main branch and feature branches.
+  Easier to manage and suitable for continuous delivery.
+- **Trunk-Based Development:** All developers commit directly to the main branch, using feature flags to control the release of new features.
+  Requires strong testing and continuous integration practices.
+
+## Collaboration with Platforms
+
+Web-based Git repositories provide a platform for sharing and working together.
+Here's a list of the most used platforms:
+
+- **GitHub:** A web-based platform for version control and collaboration.
+- **GitLab:** A web-based platform for version control, CI/CD, and project management.
+- **Bitbucket:** A web-based platform for version control, with integration for Atlassian's product.
+
+## Important Considerations
+
+- **Commit Messages:** Write clear and descriptive commit messages.
+  Explain _why_ you made the changes, not just _what_ you changed.
+- **Branching Strategy:** Choose a branching strategy that fits your team's workflow and project needs.
+- **Code Reviews:** Use pull requests (or merge requests) to perform code reviews and ensure code quality.
+- **.gitignore:** Use a `.gitignore` file to exclude unnecessary files (e.g., build artifacts, dependencies) from the repository.
+- **Remote Backup:** Ensure the code is stored in a remote environment for recovery.
+
+Version control with Git is an indispensable skill for any software developer.
+By understanding Git concepts and best practices, you can manage your codebase effectively, collaborate with others seamlessly, and ensure the quality and reliability of your projects.

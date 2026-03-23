@@ -1,0 +1,16 @@
+{
+  "title": "III. Back-End Development",
+  "description": "Developing the server-side logic.",
+  "icon": "Server",
+  "root": true,
+  "pages": [
+    "index",
+    "languages",
+    "databases",
+    "apis",
+    "auth",
+    "frameworks",
+    "web-server",
+    "..."
+  ]
+}

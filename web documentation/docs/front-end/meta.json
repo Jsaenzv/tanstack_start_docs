@@ -1,0 +1,7 @@
+{
+  "title": "II. Front-End Development",
+  "description": "Developing the user interface.",
+  "icon": "PanelsTopLeft",
+  "root": true,
+  "pages": ["index", "html", "css", "javascript", "..."]
+}

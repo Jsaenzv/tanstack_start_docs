@@ -1,0 +1,272 @@
+---
+title: Properties
+description: The Building Blocks of CSS Styling
+---
+
+You've learned about [CSS selectors](./selectors), which allow you to target specific HTML elements.
+Now, let's dive into **CSS properties**, which are the building blocks of CSS styling.
+Properties are the individual aspects of an element's appearance that you can control, like its color, font, size, and position.
+Each property has a name (e.g., `color`, `font-size`, `margin`) and a value (e.g., `blue`, `16px`, `10px`).
+
+Think of CSS properties as the knobs and dials that you use to adjust the look and feel of your web pages.
+
+## Basic Syntax
+
+The basic syntax for setting a CSS property is:
+
+```css
+selector {
+  property: value;
+}
+
+/* Example */
+p {
+  color: blue; /* Sets the text color of all paragraph elements to blue */
+}
+```
+
+## Common CSS Properties
+
+There are _many_ CSS properties, and you don't need to memorize them all at once.
+Let's explore some of the most common and useful ones, grouped by category:
+
+### Text Properties
+
+- **`color`:** Sets the text color.
+
+```css
+p {
+  color: #333; /* Dark gray */
+}
+```
+
+- **`font-size`:** Sets the size of the font.
+  Common units include `px` (pixels), `em` (relative to the font size of the parent element), and `rem` (relative to the font size of the root element).
+
+```css
+h1 {
+  font-size: 2em; /* Twice the size of the parent element's font */
+}
+```
+
+- **`font-family`:** Specifies the font to use.
+  You can specify multiple fonts as a fallback in case the browser doesn't have one available.
+
+```css
+body {
+  font-family: "Arial", "Helvetica", sans-serif;
+}
+```
+
+- **`font-weight`:** Sets the weight (boldness) of the font.
+  Common values include `normal`, `bold`, `lighter`, `bolder`, and numeric values (e.g., `400` for normal, `700` for bold).
+
+```css
+strong {
+  font-weight: bold;
+}
+```
+
+- **`text-align`:** Sets the horizontal alignment of text.
+  Common values include `left`, `right`, `center`, and `justify`.
+
+```css
+h1 {
+  text-align: center; /* Centers the heading */
+}
+```
+
+- **`line-height`:** Sets the height of a line of text.
+  A value without units (e.g., `1.5`) is usually best, as it's relative to the font size.
+
+```css
+p {
+  line-height: 1.5; /* Improves readability */
+}
+```
+
+### Background Properties
+
+- **`background-color`:** Sets the background color of an element.
+
+```css
+body {
+  background-color: #f0f0f0; /* Light gray background */
+}
+```
+
+- **`background-image`:** Sets a background image for an element.
+
+```css
+body {
+  background-image: url("background.jpg");
+}
+```
+
+- **`background-repeat`:** Specifies how the background image should be repeated.
+  Common values include `repeat`, `no-repeat`, `repeat-x`, and `repeat-y`.
+
+```css
+body {
+  background-image: url("pattern.png");
+  background-repeat: repeat; /* Repeats the pattern in both directions */
+}
+```
+
+- **`background-position`:** Specifies the position of the background image.
+
+```css
+body {
+  background-image: url("logo.png");
+  background-position: center top; /* Centers the logo horizontally and positions it at the top */
+  background-repeat: no-repeat;
+}
+```
+
+### Box Model Properties (Very Important!)
+
+The CSS box model is a fundamental concept in web development.
+It describes the rectangular boxes that are generated for HTML elements and how these boxes interact with each other.
+We have a separate page for this, refer to the [Box Model page](./box-model).
+
+- **`width`:** Sets the width of the element's content area.
+- **`height`:** Sets the height of the element's content area.
+- **`padding`:** Sets the padding (space between the content and the border) on all four sides of the element.
+- **`border`:** Sets the border around the element.
+- **`margin`:** Sets the margin (space outside the border) on all four sides of the element.
+
+### Layout Properties
+
+- **`display`:** Specifies the display type of an element.
+  Common values include `block`, `inline`, `inline-block`, `flex`, `grid`, and `none`.
+  Layout properties will be on its own separate page, check out the [Layout page](./layout).
+
+```css
+li {
+  display: inline; /* Displays list items on the same line */
+}
+```
+
+- **`position`:** Specifies the positioning method used for an element.
+  Common values include `static`, `relative`, `absolute`, `fixed`, and `sticky`.
+  The positioning property will also be on the [Layout page](./layout).
+
+- **`float`:** Floats an element to the left or right of its container, allowing text and other inline elements to wrap around it.
+
+```css
+img {
+  float: left; /* Floats the image to the left */
+  margin-right: 10px; /* Adds some space to the right of the image */
+}
+```
+
+### Border Properties
+
+- **`border-width`:** Sets the width of the border.
+
+```css
+div {
+  border-width: 2px; /* Sets a 2-pixel wide border */
+}
+```
+
+- **`border-style`:** Sets the style of the border.
+  Common values include `solid`, `dashed`, `dotted`, `double`, and `none`.
+
+```css
+div {
+  border-style: solid; /* Sets a solid border */
+}
+```
+
+- **`border-color`:** Sets the color of the border.
+
+```css
+div {
+  border-color: #000; /* Sets a black border */
+}
+```
+
+- **`border`:** A shorthand property for setting the `border-width`, `border-style`, and `border-color` in a single declaration.
+
+```css
+div {
+  border: 1px solid #ccc; /* Sets a 1-pixel solid gray border */
+}
+```
+
+### Other Properties
+
+- **`cursor`:** Specifies the type of cursor to display when the mouse pointer is over an element.
+
+```css
+a {
+  cursor: pointer; /* Changes the cursor to a pointer (hand) on links */
+}
+```
+
+- **`opacity`:** Sets the opacity (transparency) of an element.
+  Values range from `0` (completely transparent) to `1` (completely opaque).
+
+```css
+img {
+  opacity: 0.5; /* Makes the image 50% transparent */
+}
+```
+
+- **`visibility`:** Specifies whether an element is visible or hidden.
+  Values include `visible` and `hidden`.
+  The difference between `visibility: hidden;` and `display: none;` is that `visibility: hidden;` still takes up space on the page, while `display: none;` removes the element from the page layout entirely.
+
+```css
+#disclaimer {
+  visibility: hidden; /* Hides the disclaimer, but it still takes up space */
+}
+```
+
+## Shorthand Properties
+
+Many CSS properties have shorthand versions that allow you to set multiple values in a single declaration.
+We saw an example with the `border` property.
+Here are some other common shorthand properties:
+
+- **`margin` and `padding`:** You can use these to set the top, right, bottom, and left margins/paddings in a single declaration.
+
+```css
+div {
+  margin: 10px 20px 30px 40px; /* top right bottom left */
+  padding: 5px 10px; /* top/bottom left/right */
+}
+```
+
+- **`font`:** You can use this to set the `font-style`, `font-variant`, `font-weight`, `font-size`, `line-height`, and `font-family` in a single declaration.
+
+```css
+p {
+  font: italic bold 16px/1.5 Arial, sans-serif;
+}
+```
+
+## Units in CSS
+
+CSS properties often require you to specify units.
+Here are some of the most common units:
+
+- **Absolute Units:**
+  - `px` (pixels): Represents a fixed size on the screen.
+  - `pt` (points): Traditionally used for print media.
+- **Relative Units:**
+  - `em`: Relative to the font size of the parent element.
+  - `rem`: Relative to the font size of the root element (`<html>`).
+  - `%`: Relative to the size of the parent element.
+  - `vw`: Relative to 1% of the viewport's width.
+  - `vh`: Relative to 1% of the viewport's height.
+
+Using relative units (especially `em` and `rem`) is generally recommended for creating responsive designs that adapt to different screen sizes.
+
+## Experiment and Explore!
+
+This is just a glimpse of the vast world of CSS properties.
+The best way to learn is to experiment and explore.
+Try changing the values of different properties and see how they affect the appearance of your web pages.
+Don't be afraid to consult the CSS documentation for more information.

@@ -1,0 +1,12 @@
+{
+  "icon": "PaintRoller",
+  "pages": [
+    "selectors",
+    "properties",
+    "box-model",
+    "layout",
+    "responsive",
+    "tailwindcss",
+    "..."
+  ]
+}

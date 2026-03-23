@@ -1,0 +1,27 @@
+{
+  "title": "IV. Advanced Concepts",
+  "description": "Advanced production skills.",
+  "icon": "GraduationCap",
+  "root": true,
+  "pages": [
+    "index",
+    "---I. Infrastructure---",
+    "architectures",
+    "cloud",
+    "---II. Performance---",
+    "caching",
+    "load-balancing",
+    "---III. Containers---",
+    "containers",
+    "deployments",
+    "---IV. Workflows---",
+    "version-control",
+    "testing",
+    "---V. Best Practices---",
+    "devops",
+    "monitoring",
+    "security",
+    "---VI. End---",
+    "conclusions"
+  ]
+}

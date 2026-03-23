@@ -1,0 +1,181 @@
+---
+title: Functions
+description: Reusable Blocks of Code
+---
+
+You've learned about variables, data types, and operators - the basic building blocks of JavaScript.
+Now, let's take your coding skills to the next level with **functions**.
+Functions are reusable blocks of code that perform a specific task.
+They allow you to organize your code, avoid repetition, and make your programs more modular and maintainable.
+
+Think of functions as mini-programs within your program.
+They take input, perform some operations, and return output.
+
+## What is a Function?
+
+A function is a named block of code that can be executed multiple times.
+It can take input values (called _arguments_ or _parameters_), perform some calculations or actions, and optionally return a value.
+
+## Defining Functions
+
+There are several ways to define functions in JavaScript:
+
+### Function Declaration
+
+This is the most common way to define a function.
+You use the `function` keyword, followed by the function name, a list of parameters in parentheses `()`, and the function body enclosed in curly braces `{}`.
+
+```javascript
+function greet(name) {
+  return "Hello, " + name + "!";
+}
+
+// Calling the function
+let message = greet("Alice");
+console.log(message); // Output: Hello, Alice!
+```
+
+### Function Expression
+
+You can also define a function as an expression and assign it to a variable.
+
+```javascript
+const greet2 = function (name) {
+  return "Hello, " + name + "!";
+};
+
+// Calling the function
+let message2 = greet2("Bob");
+console.log(message2); // Output: Hello, Bob!
+```
+
+### Arrow Functions (ES6)
+
+Arrow functions provide a more concise syntax for defining functions.
+They are particularly useful for short, simple functions.
+
+```javascript
+const greet3 = (name) => {
+  return "Hello, " + name + "!";
+};
+
+// Calling the function
+let message3 = greet3("Charlie");
+console.log(message3); // Output: Hello, Charlie!
+```
+
+If the arrow function has only one parameter, you can omit the parentheses:
+
+```javascript
+const square = (number) => number * number;
+
+console.log(square(5)); // Output: 25
+```
+
+If the arrow function body consists of a single expression, you can omit the curly braces and the `return` keyword:
+
+```javascript
+const cube = (number) => number ** 3;
+
+console.log(cube(3)); // Output: 27
+```
+
+## Function Parameters and Arguments
+
+**Parameters** are the names you give to the input values that a function expects to receive.
+They are listed in the function definition within the parentheses.
+
+**Arguments** are the actual values that you pass to the function when you call it.
+
+In the `greet` function example above, `name` is the parameter, and `"Alice"`, `"Bob"`, and `"Charlie"` are the arguments.
+
+## Return Values
+
+A function can optionally return a value using the `return` keyword.
+The `return` statement ends the function's execution and specifies the value to be returned to the caller.
+
+If a function doesn't have a `return` statement, it implicitly returns `undefined`.
+
+```javascript
+function add(x, y) {
+  return x + y; // Returns the sum of x and y
+}
+
+let sum = add(5, 10);
+console.log(sum); // Output: 15
+
+function doSomething() {
+  // No return statement
+}
+
+let result = doSomething();
+console.log(result); // Output: undefined
+```
+
+## Function Scope
+
+Variables declared inside a function are only accessible within that function.
+This is called _function scope_.
+This helps prevent naming conflicts and keeps your code organized.
+
+```javascript
+function myFunction() {
+  let message = "This is a local variable";
+  console.log(message); // Output: This is a local variable
+}
+
+myFunction();
+// console.log(message); // This will cause an error (message is not defined outside the function)!
+```
+
+## Anonymous Functions
+
+An anonymous function is a function that doesn't have a name.
+Anonymous functions are often used as callback functions (functions that are passed as arguments to other functions).
+
+```javascript
+setTimeout(function () {
+  console.log("This message will appear after 2 seconds");
+}, 2000);
+```
+
+## Callback Functions
+
+A callback function is a function that is passed as an argument to another function, to be "called back" at a later time.
+Callbacks are a fundamental concept in asynchronous JavaScript, often used when dealing with events, timers, or data fetched from a server.
+
+```javascript
+function greetAfterDelay(name, callback) {
+  setTimeout(function() {
+    let greeting = "Hello, " + name + "!";
+    callback(greeting); // Call the callback function with the greeting
+  }, 1000); // Delay of 1 second
+}
+
+// Calling the function with a callback
+greetAfterDelay("Eve", function(message) {
+  console.log(message); // Output: Hello, Eve! (after 1 second)
+});
+```
+
+In this example, the `greetAfterDelay` function takes a `name` and a `callback` function as arguments.
+After a delay of 1 second, it creates a greeting and then calls the `callback` function, passing the greeting as an argument.
+The callback function then logs the greeting to the console.
+
+## Why Use Functions?
+
+Functions are essential for writing clean, organized, and reusable code.
+They allow you to:
+
+- **Break down complex tasks into smaller, manageable pieces.**
+- **Avoid repeating code.**
+- **Make your code easier to read and understand.**
+- **Test and debug individual parts of your code.**
+- **Reuse code in different parts of your application.**
+
+## Practice and Experiment
+
+Functions are a fundamental concept in JavaScript.
+Practice defining and calling functions with different parameters and return values.
+Experiment with function scope and anonymous functions.
+The more you use functions, the better you'll understand their power and flexibility.

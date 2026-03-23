@@ -1,0 +1,132 @@
+---
+title: CSS
+description: Styling Your Web Pages
+---
+
+So, you've got your HTML down - you know how to structure content and give it meaning.
+That's great! But right now, your web pages probably look pretty plain, right? That's where **CSS (Cascading Style Sheets)** comes in.
+CSS is the language you use to control the _presentation_ of your HTML documents - the colors, fonts, layout, and overall visual style.
+
+## What is CSS?
+
+Think of HTML as the skeleton of a web page and CSS as the skin, clothes, and makeup.
+HTML provides the structure and content, but CSS makes it look good.
+Without CSS, websites would be plain, unformatted text and images.
+
+CSS allows you to:
+
+- Control the colors, fonts, and spacing of your text.
+- Set the background colors and images of elements.
+- Position elements on the page (layout).
+- Create responsive designs that adapt to different screen sizes.
+- Add animations and transitions.
+- And much, much more!
+
+## How CSS Works: Selectors and Properties
+
+CSS works by associating _rules_ with HTML elements.
+Each rule consists of two main parts:
+
+1.  **Selector:** This identifies the HTML element(s) you want to style.
+  You can select elements by their tag name, class, ID, or other attributes.
+2.  **Declaration Block:** This contains one or more _declarations_, which specify the styles you want to apply to the selected element(s).
+  Each declaration consists of a _property_ and a _value_.
+
+Here's a simple example:
+
+```css
+h1 {
+  color: blue;
+  font-size: 32px;
+}
+```
+
+In this example:
+
+- `h1` is the selector (it selects all `<h1>` elements).
+- The code between the curly braces `{}` is the declaration block.
+- `color: blue;` is a declaration that sets the color property to blue.
+- `font-size: 32px;` is a declaration that sets the font-size property to 32 pixels.
+
+This CSS rule would make all `<h1>` elements on your page blue and 32 pixels in size.
+Pretty cool, huh?
+
+## Ways to Add CSS to Your HTML
+
+There are three main ways to add CSS to your HTML documents:
+
+1.  **Inline Styles:** You can add styles directly to HTML elements using the `style` attribute.
+  This is generally _not_ recommended, as it makes your code difficult to maintain and reuse.
+
+```html
+<h1 style="color: blue; font-size: 32px;">My Heading</h1>
+```
+
+2.  **Internal Styles:** You can embed CSS within the `<style>` element inside the `<head>` section of your HTML document.
+  This is better than inline styles, but it's still not ideal for larger projects.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Page</title>
+    <style>
+      h1 {
+        color: blue;
+        font-size: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Heading</h1>
+  </body>
+</html>
+```
+
+3.  **External Stylesheets:** You can create separate `.css` files and link them to your HTML document using the `<link>` element in the `<head>` section.
+  This is the _recommended_ approach, as it keeps your HTML and CSS separate, making your code more organized and maintainable.
+
+```html title="index.html"
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>My Heading</h1>
+  </body>
+</html>
+```
+
+```css title="style.css"
+h1 {
+  color: blue;
+  font-size: 32px;
+}
+```
+
+External stylesheets are the way to go for most projects.
+
+## The Cascade
+
+The "cascading" part of CSS refers to the way that styles are applied to elements.
+When multiple styles conflict, the browser follows a set of rules to determine which style takes precedence.
+This is called the _cascade_.
+
+The cascade is based on several factors, including:
+
+- **Origin & Importance:** Styles can come from different sources (e.g., browser defaults, external stylesheets, internal stylesheets, inline styles, user stylesheets, author stylesheets).
+  The order of importance for the same selector is generally: external -> internal -> inline, with author stylesheets (the CSS you write) generally override browser defaults.
+- **Specificity:** Some selectors are more specific than others.
+  More specific selectors have higher priority.
+- **Importance:** You can use the `!important` keyword to give a style rule the highest priority.
+  However, using `!important` excessively can make your CSS harder to manage.
+- **Source Order:** If two styles have the same specificity and origin, the one that appears later in the source code will take precedence.
+
+Understanding the cascade is essential for debugging CSS and ensuring that your styles are applied correctly.
+
+## Let's Get Styling!
+
+Ready to start making your web pages look awesome? In the following sections, we'll dive deeper into CSS selectors, properties, layout techniques, and more.
+Let's get styling!

@@ -1,0 +1,169 @@
+---
+title: Layout
+description: Structuring Your Web Pages with CSS
+---
+
+You've learned the fundamentals of CSS, including [selectors](./selectors), [properties](./properties), and the all-important [box model](./box-model).
+Now, let's dive into **layout** - how you arrange elements on the page to create visually appealing and user-friendly designs.
+CSS offers several powerful techniques for controlling layout, from basic positioning to advanced grid and flexbox systems.
+
+## Understanding the Display Property
+
+The `display` property is the cornerstone of CSS layout.
+It determines how an element is rendered on the page and how it interacts with other elements.
+Here are the most common `display` values:
+
+- **`block`:** The element behaves like a block-level element.
+  It takes up the full width available and starts on a new line.
+  You can set `width`, `height`, `padding`, `margin`, and `border` on block-level elements.
+  Examples: `<div>`, `<p>`, `<h1>`-`<h6>`, `<ul>`, `<ol>`, `<li>`.
+- **`inline`:** The element behaves like an inline element.
+  It only takes up as much width as necessary to contain its content and does not start on a new line.
+  `width` and `height` properties are ignored, and only horizontal `padding` and `margin` are respected.
+  Examples: `<span>`, `<a>`, `<img>`, `<strong>`, `<em>`.
+- **`inline-block`:** The element is placed as an inline element (doesn't start on a new line), but it can have a specified `width` and `height` and respects all `padding` and `margin` properties, similar to a block-level element.
+  This is a useful combination of the two.
+- **`none`:** The element is completely removed from the page layout and is not displayed.
+  It doesn't take up any space.
+- **`flex`:** Enables the flexbox layout model (more on this later).
+- **`grid`:** Enables the grid layout model (more on this later).
+
+```html title="Example: Controlling Display"
+<p>This is a <span>paragraph</span> with an inline element.</p>
+
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+
+<style>
+  span {
+    background-color: yellow;
+  }
+
+  li {
+    display: inline-block; /* List items are now displayed horizontally */
+    margin-right: 10px;
+  }
+</style>
+```
+
+## Mastering Element Positioning
+
+The `position` property allows you to control the exact position of an element on the page.
+There are five main `position` values:
+
+- **`static`:** The default value.
+  The element is positioned according to the normal document flow.
+  The `top`, `right`, `bottom`, and `left` properties have no effect.
+- **`relative`:** The element is positioned relative to its normal position in the document flow.
+  Using the `top`, `right`, `bottom`, and `left` properties will shift the element from its normal position _without_ affecting the position of other elements.
+- **`absolute`:** The element is removed from the normal document flow and positioned relative to its _nearest positioned ancestor_ (an ancestor with a `position` value other than `static`).
+  If there is no positioned ancestor, the element is positioned relative to the initial containing block (the `<html>` element).
+  Using `top`, `right`, `bottom`, and `left` properties will specify the offset from the edges of the containing block.
+  `absolute` positioning can be very useful but also tricky to manage, as it can easily break the normal document flow.
+- **`fixed`:** The element is removed from the normal document flow and positioned relative to the _viewport_ (the browser window).
+  It stays in the same position even when the page is scrolled.
+- **`sticky`:** The element is positioned based on the user's scroll position.
+  A sticky element toggles between `relative` and `fixed`, depending on the scroll position.
+  It's positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like a header that stays at the top of the screen when you scroll down).
+
+```html title="Example: Using Positioning"
+<div
+  style="position: relative; width: 300px; height: 200px; border: 1px solid black;"
+>
+  <div
+    style="position: absolute; top: 10px; left: 10px; background-color: red; color: white;"
+  >
+    Absolute Positioned
+  </div>
+</div>
+```
+
+## Floating Elements and Text Wrapping
+
+The `float` property is used to position an element to the left or right of its container, allowing text and other inline elements to wrap around it.
+While `float` is older technique, it's still useful to understand.
+
+Values are `left`, `right`, or `none`.
+
+```html title="Example: Floating an Image"
+<img src="image.jpg" style="float: left; margin-right: 10px;" alt="Image" />
+<p>This text will wrap around the image.</p>
+```
+
+To prevent elements from wrapping around the floated element, you can use the `clear` property.
+It can have values of `left`, `right`, `both`, or `none`.
+
+## Using Flexbox for Layout
+
+Flexbox is a powerful layout model that provides a flexible and efficient way to arrange elements in a container.
+It's particularly well-suited for creating one-dimensional layouts (arranging elements in a row or column).
+
+To use flexbox, you first need to set the `display` property of the container element to `flex` or `inline-flex`.
+Then, you can use various flexbox properties to control the alignment, direction, and size of the child elements (flex items).
+
+### Key Flexbox Properties
+
+- **`flex-direction`:** Specifies the direction of the flex items within the container (row or column).
+- **`justify-content`:** Defines how flex items are aligned along the main axis (horizontal axis for `flex-direction: row;`, vertical axis for `flex-direction: column;`).
+  Common values include `flex-start`, `flex-end`, `center`, `space-between`, and `space-around`.
+- **`align-items`:** Defines how flex items are aligned along the cross axis (the axis perpendicular to the main axis).
+  Common values include `flex-start`, `flex-end`, `center`, `baseline`, and `stretch`.
+- **`flex-wrap`:** Specifies whether flex items should wrap onto multiple lines if they exceed the container's width.
+- **`flex`:** A shorthand property that combines `flex-grow`, `flex-shrink`, and `flex-basis`.
+
+```html title="Example: Creating a Simple Navigation Menu with Flexbox"
+<nav style="display: flex; justify-content: space-around;">
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Contact</a>
+</nav>
+```
+
+## Creating Layouts with CSS Grid
+
+CSS Grid Layout is a powerful layout system that allows you to create complex two-dimensional layouts (rows and columns).
+It's particularly well-suited for structuring entire web pages or designing complex user interfaces.
+
+To use CSS Grid, you first need to set the `display` property of the container element to `grid` or `inline-grid`.
+Then, you can use various grid properties to define the structure of the grid, including the number of columns and rows, the size of the columns and rows, and the placement of elements within the grid.
+
+### Key Grid Properties
+
+- **`grid-template-columns`:** Defines the number and size of the columns in the grid.
+- **`grid-template-rows`:** Defines the number and size of the rows in the grid.
+- **`grid-gap`:** Specifies the size of the gap between grid items.
+- **`grid-column`:** Specifies the starting and ending column lines for a grid item.
+- **`grid-row`:** Specifies the starting and ending row lines for a grid item.
+
+```html title="Example: Creating a Basic Grid Layout"
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 10px;">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+  <div>Item 4</div>
+  <div>Item 5</div>
+  <div>Item 6</div>
+</div>
+```
+
+## Building Responsive Designs
+
+Modern web design is all about creating websites that look good and function well on a variety of devices, from large desktop monitors to small smartphone screens.
+This is known as **responsive design**.
+There is a separated dedicated page for this, refer to the [responsive page](./responsive).
+
+CSS provides several techniques for creating responsive layouts:
+
+- **Flexible Grids:** Using percentages or other relative units for column widths allows your layout to adapt to different screen sizes.
+- **Media Queries:** Media queries allow you to apply different CSS styles based on the characteristics of the device, such as screen size, orientation, and resolution.
+- **Flexible Images:** Using the `max-width: 100%;` and `height: auto;` properties on images allows them to scale down to fit their container without overflowing.
+
+## Experiment and Build!
+
+CSS layout is a vast and fascinating topic.
+The best way to learn is to experiment and build.
+Try creating different layouts using the techniques you've learned in this section.
+Don't be afraid to consult the CSS documentation for more information.

@@ -1,0 +1,204 @@
+---
+title: DOM
+description: Interacting with the Web Page Structure
+---
+
+You've learned the basics of JavaScript, how to use variables, data types, and functions.
+Now, let's connect JavaScript to the _web page_ itself.
+The **Document Object Model (DOM)** is your key to manipulating the content, structure, and style of a web page using JavaScript.
+It's the bridge between your JavaScript code and the HTML elements in the browser.
+
+## What is the DOM?
+
+The DOM (Document Object Model) is a programming interface for HTML and XML documents.
+It represents the page as a tree-like structure, where each HTML element, attribute, and text node is represented as an _object_.
+
+Think of the DOM as a map of your web page.
+It allows JavaScript to navigate the HTML structure and make changes to it in real-time.
+
+## The DOM Tree
+
+The DOM represents the HTML document as a tree, with the `document` object as the root.
+Each HTML element becomes a _node_ in the tree.
+The DOM tree has a hierarchical structure:
+
+- The `document` object is the root of the tree.
+- The `<html>` element is the root element of the document.
+- The `<head>` and `<body>` elements are children of the `<html>` element.
+- Elements within the `<head>` and `<body>` are children of those elements, and so on.
+
+## Accessing Elements in the DOM
+
+JavaScript provides several methods for accessing elements in the DOM:
+
+- **`document.getElementById(id)`:** Returns the element with the specified `id` attribute.
+  This is the fastest and most efficient way to access a specific element.
+
+```html
+<p id="myParagraph">This is a paragraph.</p>
+
+<script>
+  const paragraph = document.getElementById("myParagraph");
+  console.log(paragraph.textContent); // Output: This is a paragraph.
+</script>
+```
+
+- **`document.querySelector(selector)`:** Returns the first element that matches the specified CSS selector.
+
+```html
+<p class="highlight">This is a highlighted paragraph.</p>
+
+<script>
+  const highlightedParagraph = document.querySelector(".highlight");
+  console.log(highlightedParagraph.textContent); // Output: This is a highlighted paragraph.
+</script>
+```
+
+- **`document.querySelectorAll(selector)`:** Returns a NodeList (an array-like object) containing all elements that match the specified CSS selector.
+
+```html
+<p class="paragraph">Paragraph 1</p>
+<p class="paragraph">Paragraph 2</p>
+
+<script>
+  const paragraphs = document.querySelectorAll(".paragraph");
+  console.log(paragraphs.length); // Output: 2
+
+  paragraphs.forEach((paragraph) => {
+    console.log(paragraph.textContent);
+  });
+  // Output:
+  // Paragraph 1
+  // Paragraph 2
+</script>
+```
+
+- **`document.getElementsByTagName(tagName)`:** Returns an HTMLCollection (an array-like object) containing all elements with the specified tag name.
+
+```html
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+
+<script>
+  const headings = document.getElementsByTagName("h1");
+  console.log(headings.length); // Output: 1
+  console.log(headings[0].textContent); // Output: Heading 1
+</script>
+```
+
+- **`document.getElementsByClassName(className)`:** Returns an HTMLCollection containing all elements with the specified class name.
+
+```html
+<p class="paragraph">Paragraph 1</p>
+<p class="paragraph">Paragraph 2</p>
+
+<script>
+  const paragraphs = document.getElementsByClassName("paragraph");
+  console.log(paragraphs.length); // Output: 2
+  console.log(paragraphs[0].textContent); // Output: Paragraph 1
+</script>
+```
+
+**Important Considerations:**
+
+- `querySelector` and `querySelectorAll` are generally preferred over `getElementsByTagName` and `getElementsByClassName` because they are more flexible and can use any CSS selector.
+- `getElementsByTagName` and `getElementsByClassName` return a _live_ HTMLCollection, meaning that the collection is automatically updated if the DOM changes.
+  `querySelector` and `querySelectorAll` return a static NodeList, meaning that the list is not updated automatically.
+- Always try to use `getElementById` when possible.
+
+## Modifying Elements in the DOM
+
+Once you have access to an element in the DOM, you can modify its content, attributes, and style:
+
+- **`element.textContent`:** Gets or sets the text content of an element.
+
+```javascript
+const paragraph = document.getElementById("myParagraph");
+paragraph.textContent = "This is the new text.";
+```
+
+- **`element.innerHTML`:** Gets or sets the HTML content of an element.
+  Use this with caution, as it can be a security risk if you're inserting user-supplied data.
+
+```javascript
+const div = document.getElementById("myDiv");
+div.innerHTML = "<p>This is a new paragraph inside the div.</p>";
+```
+
+- **`element.setAttribute(attributeName, attributeValue)`:** Sets the value of an attribute on the element.
+
+```javascript
+const link = document.getElementById("myLink");
+link.setAttribute("href", "https://www.example.com");
+```
+
+- **`element.getAttribute(attributeName)`:** Gets the value of an attribute on the element.
+
+```javascript
+const link2 = document.getElementById("myLink");
+console.log(link2.getAttribute("href"));
+```
+
+- **`element.style.propertyName`:** Sets the value of a CSS property on the element.
+
+```javascript
+const heading = document.getElementById("myHeading");
+heading.style.color = "red";
+heading.style.fontSize = "32px";
+```
+
+- **`element.classList`:** Provides methods for adding, removing, and toggling CSS classes on an element.
+
+```javascript
+const button = document.getElementById("myButton");
+button.classList.add("highlight"); // Adds the "highlight" class
+button.classList.remove("highlight"); // Removes the "highlight" class
+button.classList.toggle("active"); // Toggles the "active" class
+```
+
+## Creating and Adding New Elements
+
+You can also create new elements and add them to the DOM:
+
+- **`document.createElement(tagName)`:** Creates a new HTML element with the specified tag name.
+- **`document.createTextNode(text)`:** Creates a new text node with the specified text.
+- **`element.appendChild(childNode)`:** Adds a child node to the end of the list of children of the element.
+- **`element.insertBefore(newNode, existingNode)`:** Inserts a new node before an existing node in the list of children of the element.
+- **`element.removeChild(childNode)`:** Removes a child node from the element.
+
+```javascript
+// Create a new paragraph element
+const newParagraph = document.createElement("p");
+
+// Create a text node for the paragraph
+const textNode = document.createTextNode(
+  "This is a new paragraph added by JavaScript."
+);
+
+// Append the text node to the paragraph
+newParagraph.appendChild(textNode);
+
+// Get the element where you want to add the paragraph
+const container = document.getElementById("container");
+
+// Append the paragraph to the container
+container.appendChild(newParagraph);
+```
+
+## Navigating the DOM Tree
+
+You can navigate the DOM tree using the following properties of element nodes:
+
+- `parentNode`: The parent node of the element.
+- `childNodes`: A NodeList of the element's children.
+- `firstChild`: The first child node of the element.
+- `lastChild`: The last child node of the element.
+- `nextSibling`: The next sibling node of the element.
+- `previousSibling`: The previous sibling node of the element.
+
+## Practice and Explore
+
+The DOM is a powerful tool for manipulating web pages with JavaScript.
+Practice accessing, modifying, and creating elements in the DOM.
+Experiment with different DOM methods and properties.
+The more you work with the DOM, the better you'll understand how to create dynamic and interactive web experiences.

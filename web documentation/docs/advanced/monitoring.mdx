@@ -1,0 +1,96 @@
+---
+title: Monitoring & Observability
+description: Application Health and Performance
+icon: Activity
+---
+
+You've deployed your application to the cloud and automated the release process.
+Now, how do you know if it's actually healthy, performing well, and meeting your users' needs? This is where robust **monitoring, observability, and alerting** come into play.
+These practices are essential for proactively identifying and addressing issues before they impact your users.
+
+## Why is Monitoring, Observability, and Alerting Important?
+
+- **Proactive Problem Detection:** Identify issues before they impact users.
+- **Performance Optimization:** Pinpoint performance bottlenecks and optimize resource utilization.
+- **Faster Incident Response:** Reduce the time to detect and resolve incidents.
+- **Improved Reliability:** Increase application uptime and reduce errors.
+- **Data-Driven Decision Making:** Provide insights into user behavior and application usage.
+- **Reduce Support Costs:** Solve the issues early.
+
+## Key Concepts
+
+- **Monitoring:** Collecting and analyzing metrics about the health and performance of your applications and infrastructure.
+- **Observability:** Going beyond basic metrics to provide deeper insights into the internal state of your systems, enabling you to understand _why_ issues are occurring.
+- **Alerting:** Automatically notifying the appropriate personnel when critical issues are detected.
+
+## Pillars of Observability
+
+Observability is often described in terms of three key "pillars":
+
+- **Metrics:** Numerical measurements of system behavior over time (e.g., CPU utilization, memory usage, request latency, error rates).
+- **Logs:** Textual records of events that occur within your application (e.g., application errors, user actions, system events).
+- **Traces:** End-to-end views of a request as it flows through your system, showing the sequence of operations and the time spent in each component.
+
+## Monitoring Strategies
+
+- **Infrastructure Monitoring:** Monitoring the health and performance of your servers, networks, and other infrastructure components.
+  - Examples: CPU usage, memory usage, disk I/O, network traffic.
+- **Application Monitoring:** Monitoring the performance and behavior of your application code.
+  - Examples: Request latency, error rates, database query times, API response times.
+- **Business Metrics Monitoring:** Tracking key business metrics to understand the impact of application performance on business outcomes.
+  - Examples: User sign-ups, order completion rates, revenue, customer satisfaction.
+- **Synthetic Monitoring:** Simulating user interactions to proactively test the availability and performance of your application.
+  - Examples: Simulating a user logging in, browsing products, and placing an order.
+
+## Tools and Technologies
+
+A wide range of tools and technologies are available for monitoring, observability, and alerting:
+
+- **Metrics Monitoring:**
+  - [Prometheus](https://prometheus.io/): An open-source metrics monitoring system.
+  - [Datadog](https://www.datadoghq.com/): A cloud-based monitoring and analytics platform.
+  - [New Relic](https://newrelic.com/): A cloud-based application performance monitoring (APM) tool.
+  - [CloudWatch](https://aws.amazon.com/cloudwatch/): Amazon's monitoring tool.
+  - [Better Stack](https://betterstack.com/): A monitoring and alerting platform built for DevOps.
+
+- **Logging:**
+  - [ELK Stack](https://www.elastic.co/observability/): (Elasticsearch, Logstash, Kibana): A popular open-source logging and analytics platform.
+  - [Amazon CloudWatch Logs](https://aws.amazon.com/cloudwatch/features/)
+  - [Azure Monitor Logs](https://azure.microsoft.com/en-us/products/monitor/)
+  - [Better Stack](https://betterstack.com/): A log management platform with integrations for many languages and frameworks.
+
+- **Tracing:**
+  - [Datadog APM](https://www.datadoghq.com/product/apm/): A cloud-based APM tool with tracing capabilities.
+  - [New Relic](https://newrelic.com/): A cloud-based application performance monitoring (APM) tool.
+  - [AWS X-Ray](https://aws.amazon.com/xray/)
+  - [Google Cloud Trace](https://cloud.google.com/trace)
+- **Alerting:**
+  - [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/): An alerting system for Prometheus.
+  - [Slack](https://slack.com/): A messaging platform that can be integrated with monitoring tools to send alerts.
+  - [Amazon SNS](https://aws.amazon.com/sns/)
+  - [Azure Monitor Alerts](https://azure.microsoft.com/en-us/products/monitor/)
+  - [Better Stack](https://betterstack.com/): Part of the all-in-one platform for monitoring, logging, and alerting.
+
+## Setting Up Alerts
+
+Alerts should be configured to notify the appropriate personnel when critical issues are detected.
+Here are some best practices for setting up alerts:
+
+- **Define Clear Thresholds:** Set thresholds for metrics that indicate a problem.
+  For example, alert if CPU usage exceeds 90% or if error rates exceed 5%.
+- **Prioritize Alerts:** Classify alerts based on their severity.
+  For example, use "critical," "warning," and "informational" levels.
+- **Route Alerts to the Right People:** Send alerts to the teams or individuals who are responsible for resolving the issue.
+- **Provide Context:** Include as much information as possible in the alert message, such as the affected service, the metric that triggered the alert, and the time of the incident.
+- **Avoid Alert Fatigue:** Tune your alert rules to minimize false positives.
+  Too many alerts can lead to alert fatigue, where people start ignoring alerts.
+
+## Important Considerations
+
+- **Choose the Right Tools:** Select tools that fit your specific needs and budget.
+- **Automate Configuration:** Use infrastructure-as-code tools to automate the deployment and configuration of your monitoring infrastructure.
+- **Regularly Review and Tune Alerts:** Regularly review your alert rules to ensure that they are still relevant and effective.
+- **Establish Clear Incident Response Procedures:** Define clear procedures for responding to incidents, including who is responsible for what and how to escalate issues.
+- **Consider log retention policies.**
+
+By implementing a comprehensive monitoring, observability, and alerting strategy, you can ensure the health and performance of your applications, reduce downtime, and improve the overall user experience.

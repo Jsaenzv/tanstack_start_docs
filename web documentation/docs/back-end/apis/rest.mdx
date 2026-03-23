@@ -1,0 +1,83 @@
+---
+title: RESTful APIs
+description: A Standard for Web Communication
+---
+
+You've learned that APIs are essential for enabling communication between the front-end and back-end of your web applications.
+Now, let's dive into one of the most popular and widely used architectural styles for building web APIs: **REST (Representational State Transfer)**.
+
+RESTful APIs provide a standardized and predictable way for clients to interact with resources on the server.
+They are based on a set of principles that promote scalability, maintainability, and ease of use.
+
+## What is REST?
+
+REST is not a protocol or a specific technology.
+It's an _architectural style_ – a set of guidelines and best practices for designing networked applications.
+RESTful APIs are stateless, meaning that the server does not store any information about the client's state between requests.
+Each request from the client contains all the information the server needs to fulfill that request.
+
+## Key Principles of RESTful APIs
+
+1.  **Client-Server Architecture:** A clear separation between the client (front-end) and the server (back-end), allowing them to evolve independently.
+2.  **Statelessness:** Each request from the client to the server must contain all the information needed to understand and process the request.
+    The server does not store any client context between requests.
+3.  **Cacheability:** Responses from the server should be explicitly marked as cacheable or non-cacheable, allowing clients and intermediaries to cache responses to improve performance.
+4.  **Layered System:** The client should not need to know whether it's communicating directly with the end server or with an intermediary along the way.
+    This allows for the use of load balancers, proxies, and other intermediaries without affecting the client.
+5.  **Uniform Interface:** This is the most important principle, and it encompasses several sub-principles:
+    - **Identification of Resources:** Each resource should be identified using a unique URI (Uniform Resource Identifier).
+    - **Manipulation of Resources Through Representations:** Clients manipulate resources by sending representations (e.g., JSON, XML) to the server.
+    - **Self-Descriptive Messages:** Each message should contain enough information to describe how to process it.
+    - **Hypermedia as the Engine of Application State (HATEOAS):** Clients should be able to discover new actions and resources by following links provided in the responses.
+
+## RESTful API Endpoints
+
+RESTful APIs typically expose resources through a set of endpoints, which are URLs that represent specific data or actions.
+Here are some common examples:
+
+- `/users`: Represents the collection of all users.
+- `/users/{id}`: Represents a specific user with the ID `{id}`.
+- `/products`: Represents the collection of all products.
+- `/orders`: Represents the collection of all orders.
+
+## HTTP Methods in RESTful APIs
+
+RESTful APIs use HTTP methods to indicate the desired action on a resource.
+These methods closely align with common [CRUD](../databases/crud) operations:
+
+- **GET:** Retrieve a resource.
+- **POST:** Create a new resource.
+- **PUT:** Update an existing resource (replaces the entire resource).
+- **PATCH:** Partially update an existing resource (modifies only specific attributes).
+- **DELETE:** Delete a resource.
+
+## Request and Response Formats
+
+RESTful APIs typically use standard data formats for exchanging data between the client and the server:
+
+- **JSON (JavaScript Object Notation):** A lightweight and human-readable data format that is widely used in web applications.
+- **XML (Extensible Markup Language):** A more verbose and complex data format that is often used in enterprise applications.
+
+## Example: RESTful API for Managing Users
+
+Here's an example of how you might design a RESTful API for managing users:
+
+| Method | Endpoint      | Description                                                                |
+| ------ | ------------- | -------------------------------------------------------------------------- |
+| GET    | `/users`      | Retrieves a list of all users.                                             |
+| GET    | `/users/{id}` | Retrieves a specific user with the given ID.                               |
+| POST   | `/users`      | Creates a new user.                                                        |
+| PUT    | `/users/{id}` | Updates an existing user with the given ID (replaces the entire resource). |
+| PATCH  | `/users/{id}` | Partially updates an existing user with the given ID.                      |
+| DELETE | `/users/{id}` | Deletes the user with the given ID.                                        |
+
+## Benefits of Using RESTful APIs
+
+- **Simplicity:** RESTful APIs are relatively easy to understand and implement.
+- **Scalability:** The stateless nature of REST allows for easy scaling by adding more servers.
+- **Flexibility:** RESTful APIs can be used with a variety of programming languages and platforms.
+- **Cacheability:** RESTful APIs support caching, which can improve performance.
+- **Visibility:** Good to inspect, which facilitate debugging.
+
+RESTful APIs are a powerful and widely used approach for building web APIs.
+Understanding the principles of REST is essential for any back-end developer.

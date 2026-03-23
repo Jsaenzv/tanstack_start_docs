@@ -1,0 +1,112 @@
+---
+title: Load Balancing
+description: Distributes load for availability and scalability
+icon: Scale
+---
+
+You've optimized your application's performance with caching.
+Now, let's ensure it can handle increasing traffic and remain highly available by implementing **load balancing**.
+Load balancing distributes incoming network traffic across multiple servers, preventing any single server from becoming overloaded.
+This page explores load balancing concepts, algorithms, and common deployment scenarios.
+
+## What is Load Balancing?
+
+Load balancing is the process of distributing network traffic across multiple servers in a server farm or cluster.
+Instead of sending all requests to a single server, a load balancer acts as a traffic cop, intelligently routing requests to different servers based on various factors.
+This distributes the workload, prevents bottlenecks, and improves overall application performance, availability, and scalability.
+
+## Benefits of Load Balancing
+
+- **Improved Performance:** Distributing traffic across multiple servers prevents any single server from becoming overloaded, resulting in faster response times and improved user experience.
+- **Increased Availability:** If one server fails, the load balancer can automatically redirect traffic to the remaining healthy servers, ensuring continuous availability.
+- **Scalability:** Load balancing makes it easy to scale your application by adding or removing servers as needed, without disrupting service.
+- **Fault Tolerance:** Load balancers can detect and remove unhealthy servers from the pool, improving fault tolerance.
+- **Reduced Downtime:** Load balancing enables you to perform maintenance or upgrades on individual servers without taking the entire application offline.
+
+## Load Balancing Algorithms
+
+Load balancers use various algorithms to determine which server should receive each request.
+Here are some common algorithms:
+
+- **Round Robin:** Distributes requests sequentially to each server in the pool.
+  Simple and easy to implement, but doesn't consider server load.
+- **Weighted Round Robin:** Distributes requests based on assigned weights to each server.
+  Servers with higher weights receive more requests.
+  This allows you to account for servers with different capacities.
+- **Least Connections:** Directs requests to the server with the fewest active connections.
+  This helps distribute the load more evenly across servers.
+- **Least Response Time:** Directs requests to the server with the fastest response time.
+  This minimizes latency for users.
+- **Hash-Based (Consistent Hashing):** Uses a hash function to map requests to specific servers based on a key (e.g., IP address, URL).
+  This ensures that requests from the same client are consistently routed to the same server, which can be beneficial for caching or session affinity.
+- **IP Hash:** Uses the IP address to determinate which server should get the request.
+- **Geo-Location:** Directs requests to the closest region.
+
+## Types of Load Balancers
+
+Load balancers can be implemented in hardware or software:
+
+- **Hardware Load Balancers:** Dedicated physical devices designed specifically for load balancing.
+  They offer high performance and reliability but can be expensive.
+  Examples: F5 Networks, Citrix.
+- **Software Load Balancers:** Software applications that run on standard servers.
+  They are more flexible and cost-effective than hardware load balancers.
+  Examples: Nginx, HAProxy, cloud-based load balancers.
+
+## Load Balancing Deployment Scenarios
+
+Load balancing can be deployed in various scenarios:
+
+- **Layer 4 Load Balancing (Transport Layer):** Operates at the transport layer (TCP/UDP).
+  Distributes traffic based on IP addresses and port numbers.
+  Fast and efficient but limited in its ability to make intelligent routing decisions.
+- **Layer 7 Load Balancing (Application Layer):** Operates at the application layer (HTTP/HTTPS).
+  Can make routing decisions based on URL, headers, cookies, and other application-specific information.
+  More flexible but can be slower than Layer 4 load balancing.
+- **Internal Load Balancing:** Distributes traffic within a private network, such as between microservices.
+- **Global Load Balancing:** Distributes traffic across multiple geographic regions.
+  It is a more complex configuration.
+
+## Implementing Load Balancing
+
+Here's an example of how to configure load balancing using Nginx:
+
+```nginx title="nginx.conf"
+http {
+  # Define a group of backend servers
+  upstream myapp1 {
+    server appserver1.example.com;
+    server appserver2.example.com;
+    server appserver3.example.com;
+  }
+
+  # Define a server block to handle incoming requests
+  server {
+    listen 80;  # Listen on port 80 (standard HTTP port)
+
+    location / {  # Match all requests (root path)
+      proxy_pass http://myapp1;  # Forward requests to the upstream group 'myapp1'
+    }
+  }
+}
+```
+
+**Explanation:**
+
+1. **`http { ... }`**: This section configures HTTP settings.
+2. **`upstream myapp1 { ... }`**: This defines a group of servers named `myapp1`.
+
+   - **`upstream myapp1`**: This names the group of servers.
+    You can name it anything.
+   - **`server appserver1.example.com;`**: This specifies a server in the group.
+    Replace `appserver1.example.com` (and the others) with your actual server addresses.
+   - **Round Robin**: Nginx uses Round Robin by default.
+    It sends requests to `appserver1`, then `appserver2`, then `appserver3`, and repeats.
+3. **`server { ... }`**: This configures the server to listen for requests.
+   - **`listen 80;`**: This tells Nginx to listen for requests on port 80 (the standard HTTP port).
+    Use port 443 for HTTPS.
+   - **`location / { ... }`**: This block handles all requests.
+    `location /` matches every request.
+   - **`proxy_pass http://myapp1;`**: This sends the request to the `myapp1` group of servers.
+    Nginx chooses a server from the group using Round Robin.
+    `http://` means Nginx will communicate with your servers using HTTP.

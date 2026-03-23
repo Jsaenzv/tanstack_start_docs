@@ -1,0 +1,98 @@
+---
+title: JavaScript
+description: Leveraging JavaScript on the Server
+---
+
+You're already familiar with JavaScript from the front-end section, where it's the language of the browser.
+But JavaScript can also be a powerful force on the back-end, thanks to runtimes like **Node.js**, **Deno**, and **Bun**, which allow you to execute JavaScript code outside of a web browser.
+
+## JavaScript Runtimes
+
+These runtimes enable server-side JavaScript development, but they each have distinct characteristics and approaches.
+
+### Node.js
+
+Node.js is a runtime environment built on Chrome's V8 JavaScript engine, the same engine that powers the Chrome browser.
+This means you can use the same JavaScript syntax and concepts you already know from front-end development to build server-side applications.
+This "JavaScript everywhere" approach can significantly reduce the learning curve and allow front-end and back-end developers to collaborate more effectively.
+
+#### Key Features of Node.js
+
+- **Asynchronous and Event-Driven:** Node.js uses an event-driven, non-blocking I/O model.
+  This means that it can handle multiple requests concurrently without blocking the main thread, making it highly scalable and efficient for real-time applications.
+- **NPM (Node Package Manager):** Node.js has a vast ecosystem of open-source libraries and frameworks available through npm, the Node Package Manager.
+  This makes it easy to find and use pre-built modules for common tasks, saving you time and effort.
+- **JavaScript Everywhere:** As mentioned earlier, using JavaScript on both the front-end and back-end can simplify development and improve collaboration.
+- **Large and Active Community:** Node.js has a large and active community, which means there are plenty of resources, tutorials, and support available.
+
+#### Downsides of Node.js
+
+- **Single-Threaded:** Although Node.js is asynchronous, it runs on a single thread.
+  CPU-intensive tasks can block the event loop and degrade performance.
+  For such tasks, consider using worker threads or another language.
+- **Callback Hell (Potentially):** While promises and async/await help, poorly structured asynchronous code can still lead to complex callback chains.
+- **Rapid Development:** Changes on versions and libraries might be hard to follow.
+
+### Deno
+
+Deno is a modern runtime for JavaScript and TypeScript, focusing on security and developer experience. It was created by the same person who created Node.js, Ryan Dahl, to address some of the perceived shortcomings of Node.js.
+
+#### Key Features of Deno
+
+- **Security by Default:** Deno requires explicit permissions for accessing the file system, network, and environment variables. This enhances security and prevents malicious code from running without user consent.
+- **TypeScript Support:** Deno has built-in support for TypeScript, eliminating the need for separate compilation steps.
+- **ES Modules:** Deno uses ES modules for managing dependencies, promoting better code organization and avoiding the `node_modules` folder.
+- **Decentralized Packages:** Deno allows importing packages directly from URLs, reducing reliance on a central package registry.
+
+#### Downsides of Deno
+
+- **Smaller Ecosystem:** Compared to Node.js, Deno's ecosystem of libraries and frameworks is still relatively small.
+- **New Technology:** As a newer runtime, Deno is still evolving, and there may be breaking changes in future versions.
+- **Limited Adoption:** While growing, Deno's adoption is still less widespread than Node.js.
+
+### Bun
+
+Bun is a new JavaScript runtime designed for speed, with a focus on performance and developer productivity. It's designed as a drop-in replacement for Node.js in many cases.
+
+#### Key Features of Bun
+
+- **Speed:** Bun is written in Zig and claims significant performance improvements over Node.js in various benchmarks.
+- **Compatibility:** Bun aims to be compatible with existing Node.js code and npm packages, making migration easier.
+- **Built-in Tooling:** Bun includes built-in support for TypeScript, JSX, and other modern JavaScript features, reducing the need for external build tools.
+- **Fast Package Manager:** Bun has its own package manager that is designed to be significantly faster than npm and yarn.
+
+#### Downsides of Bun
+
+- **New Technology:** Bun is very new, and its long-term stability and compatibility are still uncertain.
+- **Smaller Ecosystem:** Like Deno, Bun's ecosystem is smaller than Node.js's, although it can often use npm packages.
+- **Potential Compatibility Issues:** Despite aiming for compatibility, some Node.js packages may not work perfectly with Bun.
+
+## JavaScript Frameworks
+
+JavaScript frameworks provide structure and tools to streamline backend development. Here are a few popular options:
+
+### Express.js
+
+Express.js is a minimalist and flexible Node.js web application framework that provides a robust set of features for building web and mobile applications.
+It's known for its simplicity and extensibility through middleware.
+
+### Hono
+
+Hono is a small, fast, and ultra-lightweight web framework for Cloudflare Workers, Deno, Bun, Node.js, and others.
+It excels in performance and is well-suited for serverless environments.
+
+### Koa
+
+Koa is a modern web framework designed by the team behind Express, aiming to be a smaller, more expressive, and more robust foundation for web applications and APIs.
+It leverages async/await for cleaner and more manageable asynchronous code.
+
+## Choosing a Runtime
+
+The best runtime for your project depends on your specific needs and priorities.
+
+- **Node.js:** Mature ecosystem, vast library support, widely adopted.
+- **Deno:** Security-focused, TypeScript support, modern features.
+- **Bun:** Performance-oriented, fast tooling, aims for Node.js compatibility.
+
+JavaScript, combined with these runtimes and frameworks, offers a powerful and versatile platform for building back-end applications.
+Their familiar syntax, vast ecosystem, and asynchronous nature make it a popular choice for many developers.

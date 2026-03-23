@@ -1,0 +1,104 @@
+---
+title: CRUD Operations
+description: The Foundation of Data Manipulation
+---
+
+You've designed your database, defining the structure and relationships between your data.
+Now, it's time to learn how to interact with that data: how to create, read, update, and delete records.
+These four fundamental operations are collectively known as **CRUD**.
+
+CRUD operations are the foundation of data manipulation in almost any application.
+Understanding how to perform these operations efficiently and securely is essential for back-end developers.
+
+## The Four Core Operations
+
+- **Create (Insert):** Adding new records to your database.
+  This operation involves inserting data into one or more tables to create a new entity.
+- **Read (Select):** Retrieving existing records from your database.
+  This operation involves querying the database to fetch specific data based on certain criteria.
+- **Update (Modify):** Modifying existing records in your database.
+  This operation involves changing the values of specific columns or fields in a table or document.
+- **Delete (Remove):** Removing records from your database.
+  This operation involves deleting rows from a table or documents from a collection.
+
+## CRUD in Relational Databases
+
+In relational databases, you perform CRUD operations using SQL statements.
+Here are some examples:
+
+```sql title="Create (Insert)"
+INSERT INTO users (username, email, password)
+VALUES ('john.doe', 'john.doe@example.com', 'hashed_password');
+```
+
+This SQL statement inserts a new row into the `users` table with the specified values for the `username`, `email`, and `password` columns.
+
+```sql title="Read (Select)"
+SELECT user_id, username, email
+FROM users
+WHERE username = 'john.doe';
+```
+
+This SQL statement retrieves the `user_id`, `username`, and `email` columns from the `users` table for the user with the username "john.doe".
+
+```sql title="Update (Update)"
+UPDATE users
+SET email = 'john.newemail@example.com'
+WHERE user_id = 123;
+```
+
+This SQL statement updates the `email` column in the `users` table for the user with the `user_id` of 123.
+
+```sql title="Delete (Delete)"
+DELETE FROM users
+WHERE user_id = 123;
+```
+
+This SQL statement deletes the row from the `users` table for the user with the `user_id` of 123.
+
+## CRUD in NoSQL Databases
+
+NoSQL databases use different query languages and APIs for performing CRUD operations.
+Here are some examples using MongoDB:
+
+```javascript title="Create (Insert)"
+db.users.insertOne({
+  username: "john.doe",
+  email: "john.doe@example.com",
+  password: "hashed_password",
+});
+```
+
+This command inserts a new document into the `users` collection with the specified values.
+
+```javascript title="Read (Find)"
+db.users.find({ username: "john.doe" });
+```
+
+This command retrieves all documents from the `users` collection where the `username` is "john.doe".
+
+```javascript title="Update (Update)"
+db.users.updateOne(
+  { user_id: 123 },
+  { $set: { email: "john.newemail@example.com" } }
+);
+```
+
+This command updates the `email` field in the document with the `user_id` of 123.
+
+```javascript title="Delete (Delete)"
+db.users.deleteOne({ user_id: 123 });
+```
+
+This command deletes the document with the `user_id` of 123 from the `users` collection.
+
+## Important Considerations
+
+- **Security:** Always sanitize user input and use parameterized queries to prevent SQL injection attacks and other security vulnerabilities.
+- **Transactions:** Use transactions to ensure data consistency when performing multiple CRUD operations.
+- **Performance:** Optimize your queries and use indexes to improve performance, especially for large datasets.
+- **ORMs (Object-Relational Mappers):** Object-Relational Mappers (ORMs) can simplify database interactions by mapping database tables to objects in your code.
+  However, it's important to understand the underlying SQL queries that the ORM generates to optimize performance.
+
+Mastering CRUD operations is a fundamental skill for any back-end developer.
+It's the key to building applications that can store, retrieve, update, and delete data efficiently and securely.

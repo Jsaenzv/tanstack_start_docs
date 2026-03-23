@@ -1,0 +1,140 @@
+---
+title: Docker Containerization
+description: Consistent Application Packaging
+icon: Container
+---
+
+You've learned about architectures, caching and load balancing, but now it's time to discuss how to ensure your application behaves the same way in development, testing, and production environments by implementing **containerization**.
+Containers provide a consistent and isolated environment for your application, simplifying deployment and improving portability.
+This page explores containerization concepts, Docker, and common containerization practices.
+
+## What is Containerization?
+
+Containerization is a lightweight form of virtualization that allows you to package an application and all its dependencies (libraries, system tools, runtime) into a single, portable image called a container.
+Unlike virtual machines (VMs), which include an entire operating system, containers share the host OS kernel, making them much smaller and more efficient.
+
+Think of it like this: VMs are like shipping entire houses, while containers are like shipping pre-fabricated rooms.
+They are much smaller, faster to create, and easier to move around.
+
+## Benefits of Containerization
+
+- **Consistency:** Containers ensure that your application runs consistently across different environments, regardless of the underlying infrastructure.
+- **Portability:** Containers can be easily moved and deployed to different platforms, including local machines, cloud environments, and container orchestration platforms.
+- **Isolation:** Containers provide isolation between applications, preventing conflicts and improving security.
+- **Efficiency:** Containers are lightweight and efficient, consuming fewer resources than VMs.
+- **Scalability:** Containers can be easily scaled up or down to meet changing demand.
+- **Faster Deployment:** Containers streamline the deployment process, reducing the time it takes to release new features and updates.
+- **Simplified DevOps:** Simplify the deployment and integration processes.
+
+## Docker: The Leading Containerization Platform
+
+Docker is the leading containerization platform.
+It provides a set of tools and technologies for building, shipping, and running containers.
+Docker employs a client-server architecture.
+At the heart of this architecture is the **Docker daemon**, a persistent background process that manages Docker images, containers, networks, and volumes.
+Think of the daemon as the engine that powers Docker, listening for Docker API requests and carrying out the instructions.
+You interact with the daemon through the **Docker client**, a command-line interface (CLI) that sends commands to the daemon to build, run, and manage containers.
+
+### Key Docker Concepts
+
+- **Docker Image:** A read-only template that contains the application code, runtime, system tools, libraries, and settings required to run the application.
+- **Docker Container:** A runnable instance of a Docker image.
+  It's a lightweight, isolated environment that can be started, stopped, and removed.
+- **Dockerfile:** A text file that contains instructions for building a Docker image.
+  It specifies the base image, the commands to install dependencies, and the command to run the application.
+- **Docker Hub:** A public registry for storing and sharing Docker images.
+- **Docker Compose:** A tool for defining and managing multi-container Docker applications.
+
+## Creating a Dockerfile
+
+A Dockerfile is a text file that contains instructions for building a Docker image.
+Here's an example of a Dockerfile for a Node.js application:
+
+```dockerfile title="Dockerfile"
+# Use an official Node.js runtime as a parent image
+FROM node:22
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install application dependencies
+RUN npm install
+
+# Copy the application source code to the working directory
+COPY . .
+
+# Expose the port the app listens on
+EXPOSE 3000
+
+# Define the command to run the app
+CMD [ "node", "server.js" ]
+```
+
+Let's break down the Dockerfile instructions:
+
+- `FROM node:22`: Specifies the base image to use (in this case, the official Node.js 22 image from Docker Hub).
+- `WORKDIR /app`: Sets the working directory inside the container.
+- `COPY package*.json ./`: Copies the `package.json` and `package-lock.json` files to the working directory.
+- `RUN npm install`: Installs the application dependencies using `npm`.
+- `COPY . .`: Copies the entire application source code to the working directory.
+- `EXPOSE 3000`: Exposes port 3000, which the application listens on.
+- `CMD [ "node", "server.js" ]`: Defines the command to run the application when the container starts.
+
+## Building a Docker Image
+
+To build a Docker image from a Dockerfile, use the `docker build` command:
+
+```bash
+docker build -t my-node-app .
+```
+
+This command builds an image named `my-node-app` using the Dockerfile in the current directory.
+
+## Running a Docker Container
+
+To run a Docker container from an image, use the `docker run` command:
+
+```bash
+docker run -p 8080:3000 my-node-app
+```
+
+This command runs a container from the `my-node-app` image, mapping port 8080 on the host machine to port 3000 in the container.
+
+## Docker Compose
+
+Docker Compose is a tool for defining and managing multi-container Docker applications.
+You define the services that make up your application in a `docker-compose.yml` file and then use Docker Compose to start, stop, and scale the services.
+
+Here's an example of a `docker-compose.yml` file for a Node.js application with a Redis database:
+
+```yaml title="docker-compose.yml"
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "8080:3000"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+  redis:
+    image: "redis:alpine"
+```
+
+This `docker-compose.yml` defines two services: `web` (the Node.js application) and `redis` (the Redis database).
+The `web` service depends on the `redis` service, meaning that Docker Compose will start the Redis container before starting the Node.js container.
+
+## Important Considerations
+
+- **Image Size:** Keep your Docker images as small as possible by using multi-stage builds, minimizing dependencies, and using appropriate base images.
+- **Security:** Secure your containers by using minimal base images, running processes as non-root users, and regularly scanning for vulnerabilities.
+- **Networking:** Understand how Docker containers communicate with each other and with the outside world.
+- **Data Persistence:** Use volumes or bind mounts to persist data outside the container.
+- **Orchestration:** For complex applications, consider using a container orchestration platform like Kubernetes or Docker Swarm.
+
+Containerization with Docker is a powerful technique for packaging and deploying web applications consistently across different environments.
+By understanding Docker concepts and best practices, you can streamline your deployment process, improve application portability, and enhance the reliability of your applications.

@@ -1,0 +1,63 @@
+---
+title: Ruby
+description: Elegance and Convention for Web Development
+---
+
+Ruby is a dynamic, open-source programming language known for its elegant syntax, focus on developer happiness, and powerful web framework, Ruby on Rails.
+While not as widely used as some other back-end languages, Ruby offers a unique blend of productivity and expressiveness.
+
+## Why Ruby for Back-End?
+
+- **Developer Productivity:** Ruby's syntax is designed to be easy to read and write, allowing developers to build applications quickly.
+- **Ruby on Rails:** The Ruby on Rails framework provides a comprehensive set of tools and conventions that streamline web development.
+- **Convention over Configuration:** Rails promotes the principle of "convention over configuration," meaning that it makes assumptions about how you want to structure your application, reducing the amount of boilerplate code you need to write.
+- **Large and Active Community:** Ruby has a large and active community, providing ample support and resources.
+- **Test-Driven Development (TDD):** Ruby and Rails emphasize TDD, making it easier to write robust and well-tested applications.
+
+## Key Features
+
+- **Dynamic Typing:** Ruby is dynamically typed, allowing for greater flexibility but also requiring more careful testing.
+- **Object-Oriented Programming (OOP):** Ruby is a pure object-oriented language, where everything is an object.
+- **Metaprogramming:** Ruby supports metaprogramming, allowing you to write code that manipulates other code at runtime.
+- **Elegant Syntax:** Ruby's syntax is designed to be readable and expressive, making code easier to understand.
+
+## Ruby on Rails Framework
+
+Ruby on Rails (often shortened to just "Rails") is a full-stack web framework written in Ruby.
+It provides a complete set of tools and conventions for building web applications, including:
+
+- **Active Record:** An ORM (Object-Relational Mapper) that simplifies database interactions.
+- **Action Controller:** A component that handles incoming requests and generates responses.
+- **Action View:** A component that handles the presentation of data using templates.
+- **Routing:** A system for mapping URLs to specific controller actions.
+- **Asset Pipeline:** A system for managing CSS, JavaScript, and other assets.
+
+---
+
+Here's a basic example of a Rails controller action:
+
+```ruby
+class WelcomeController < ApplicationController
+  def index
+    @message = "Hello, Rails!"
+  end
+end
+```
+
+And the corresponding view (`app/views/welcome/index.html.erb`):
+
+```erb
+<h1><%= @message %></h1>
+```
+
+This code creates a controller action that sets a `@message` variable and a view that displays the message.
+
+## Downsides
+
+- **Performance:** Ruby is generally slower than compiled languages like Java or C++.
+  However, performance is often not a major concern for many web applications, and Rails provides caching mechanisms to improve performance.
+- **Convention over Flexibility:** While "convention over configuration" can speed up development, it can also make it more difficult to deviate from the framework's default conventions.
+- **Learning Curve (Rails):** Rails has a steep learning curve, especially for beginners.
+
+Ruby, combined with Ruby on Rails, provides a productive and enjoyable environment for building web applications.
+Its elegant syntax, convention-based approach, and strong community make it a popular choice for many developers, particularly for projects where speed of development and developer happiness are priorities.

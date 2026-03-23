@@ -1,0 +1,69 @@
+---
+title: The World Wide Web
+description: Surfing the Digital Ocean
+---
+
+You've already learned about the _internet_ - that vast network of connections, addresses, and communication rules.
+Now, let's dive into the **World Wide Web (WWW)**, often shortened to just "the Web."
+While many people use "internet" and "Web" as the same thing, it's crucial to understand that the Web is just _one_ of the many services that utilize the internet's infrastructure.
+
+## What Is the Web?
+
+Think of the internet as a vast ocean. The Web, then, is like all the ships sailing upon that ocean. It's an enormous collection of interconnected documents and resources.
+These resources primarily consist of web pages, which are documents written in a language called HTML.
+Websites are collections of these related web pages, usually grouped under a single domain name, such as `google.com` or `wikipedia.org`.
+The magic that connects all these pages and websites together is hyperlinks - those clickable links, often underlined and blue, that transport you from one page to another, even across different servers located around the world.
+
+## How Does the Web Work?
+
+So, how does this whole web-surfing process actually work? Let's break it down.
+It all starts with you, the client.
+You open a web browser like Chrome, Firefox, Safari, or Edge on your computer, phone, or tablet.
+Then, you either type a web address, known as a URL (for example, `https://www.example.com`), into the browser's address bar, or you click on a link.
+This action sends a request out onto the internet.
+For a more in-depth look at this process, see the [request-response cycle](../client-server#the-request-response-cycle).
+
+Before your request can reach the correct server, a crucial step happens: a [DNS lookup](../ip-and-dns/dns).
+The internet uses the Domain Name System (DNS) to translate that human-readable web address (like `www.example.com`) into the server's numerical IP address (something like `192.168.1.1`).
+You can think of DNS as the internet's phone book.
+
+Once the IP address is found, your request travels across the internet, utilizing the TCP/IP protocols we discussed earlier, until it reaches the server hosting the website you're trying to access.
+A server is essentially a powerful computer specifically designed to store web pages and respond to requests from browsers.
+
+Your browser and the server communicate using a language called [HTTP](../http).
+HTTP defines the format of requests and responses, establishing a set of rules for their interaction.
+The server locates the specific web page you requested and sends it back to your browser as an HTTP response.
+This response includes the HTML code that makes up the page, along with any associated images, videos, or other necessary resources.
+
+Your browser then takes over, receiving the HTML code and interpreting it.
+This process is called "rendering."
+The browser displays the text, images, and other elements according to the instructions within the HTML and CSS, which dictate the page's visual appearance.
+And finally, the web page appears on your screen, ready for you to interact with it!
+
+![Web Schema](./web.png)
+
+## Key Web Technologies
+
+Several key technologies are fundamental to the functioning of the Web.
+HTML serves as the basic building block of web pages.
+It uses _tags_ to structure the content, defining headings, paragraphs, images, links, and more.
+Think of it as the skeleton of a web page.
+CSS controls the _styling_ of web pages - everything from colors and fonts to layout and overall design.
+It's like the skin and clothing, giving the page its visual style.
+JavaScript, a programming language, adds _interactivity_ to web pages.
+It enables actions like responding to button clicks, form submissions, or mouse movements, making web pages dynamic and responsive.
+And, of course, there are [URLs](../urls) - the web addresses you use to navigate the Web.
+
+## The Web is Dynamic
+
+The Web is constantly evolving.
+New websites are launched, pages are updated, and links are created continuously.
+This dynamic nature is a key part of what makes the Web so powerful and valuable.
+Technologies like JavaScript contribute to making web pages interactive and responsive, leading to a richer and more engaging user experience.
+
+## Summary: Internet vs. Web (Again!)
+
+To repeat the crucial distinction: The _internet_ is the underlying infrastructure - the network, the physical connections, the addressing system (IP addresses), and the rules for communication (TCP/IP).
+The _Web_, on the other hand, is a _service_ that operates _on top of_ the internet.
+It's the system of interconnected web pages, websites, and hyperlinks that you access and navigate using a web browser.
+Understanding this difference is fundamental for any aspiring web developer, as you're not simply building for the internet; you're building for the Web, a specific and sophisticated system built upon the internet's foundation.

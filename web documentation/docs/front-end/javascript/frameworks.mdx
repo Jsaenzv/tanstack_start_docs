@@ -1,0 +1,142 @@
+---
+title: Frameworks
+description: Building Complex UIs with JavaScript Frameworks
+---
+
+You've mastered the basics of JavaScript and know how to manipulate the DOM, handle events, and work with JSON data.
+Now, you're ready to approach larger and more complex web applications.
+That's where JavaScript frameworks come in.
+Frameworks provide structure, tools, and best practices to help you build scalable, maintainable, and efficient user interfaces (UIs).
+
+## What are JavaScript Frameworks?
+
+A JavaScript framework is a collection of pre-written code, tools, and libraries that provide a foundation for building web applications.
+Frameworks typically offer features such as:
+
+- **Component-based architecture:** Breaking down the UI into reusable components.
+- **Data binding:** Automatically synchronizing data between the UI and the application logic.
+- **Routing:** Managing navigation between different views or pages.
+- **State management:** Managing the application's data and state.
+- **Templating:** Creating dynamic HTML templates.
+
+Using a framework can save you a lot of time and effort compared to building everything from scratch.
+It also helps you enforce consistency and best practices in your code.
+
+## Popular JavaScript Frameworks
+
+There are many JavaScript frameworks available, each with its own strengths and weaknesses.
+Here's a brief overview of some of the most popular ones:
+
+### React
+
+- **Description:** React is a JavaScript library (not a full-fledged framework) for building user interfaces.
+  It's developed and maintained by Facebook.
+- **Key Features:**
+  - **Component-based:** Build UIs from reusable components.
+  - **Virtual DOM:** React uses a virtual DOM to efficiently update the actual DOM, improving performance.
+  - **JSX:** React uses JSX, a syntax extension to JavaScript that allows you to write HTML-like code within your JavaScript components.
+  - **Large Ecosystem:** React has a large and active community and a vast ecosystem of libraries and tools.
+- **Use Cases:** Building single-page applications (SPAs), complex UIs, and interactive web applications.
+- **Learning Curve:** Moderate. JSX and the component-based architecture can take some getting used to.
+
+```jsx title="Example React component"
+function MyComponent() {
+  return (
+    <div>
+      <h1>Hello, React!</h1>
+      <p>This is a React component.</p>
+    </div>
+  );
+}
+```
+
+### Angular
+
+- **Description:** Angular is a comprehensive JavaScript framework for building client-side web applications.
+  It's developed and maintained by Google.
+- **Key Features:**
+  - **Component-based:** Similar to React, Angular uses a component-based architecture.
+  - **TypeScript:** Angular is written in TypeScript, a superset of JavaScript that adds static typing and other features.
+  - **Dependency Injection:** Angular uses dependency injection to manage dependencies between components.
+  - **Two-Way Data Binding:** Angular provides two-way data binding, which automatically synchronizes data between the model and the view.
+- **Use Cases:** Building large, complex enterprise applications.
+- **Learning Curve:** Steep. Angular has a lot of concepts and conventions to learn.
+
+```typescript title="Example Angular component (TypeScript)"
+import { Component } from "@angular/core";
+
+@Component({
+  selector: "app-my-component",
+  templateUrl: "./my-component.component.html",
+  styleUrls: ["./my-component.component.css"],
+})
+export class MyComponent {
+  message = "Hello, Angular!";
+}
+```
+
+### Vue.js
+
+- **Description:** Vue.js is a progressive JavaScript framework for building user interfaces.
+  It's designed to be incrementally adoptable, meaning that you can use it for small parts of your application or for the entire UI.
+- **Key Features:**
+  - **Component-based:** Vue.js also uses a component-based architecture.
+  - **Simple Syntax:** Vue.js has a simple and intuitive syntax, making it easy to learn.
+  - **Reactive Data Binding:** Vue.js provides reactive data binding, which automatically updates the UI when the data changes.
+  - **Versatile:** Vue.js can be used for building single-page applications, interactive components, and more.
+- **Use Cases:** Building single-page applications, interactive components, and progressive enhancements to existing websites.
+- **Learning Curve:** Relatively easy, especially for developers with HTML, CSS, and JavaScript experience.
+
+```javascript title="Example Vue.js component"
+Vue.component("my-component", {
+  template: "<div>Hello, Vue!</div>",
+});
+```
+
+### Svelte
+
+- **Description:** Svelte is a JavaScript compiler that transforms your component code into highly efficient vanilla JavaScript at _build time_.
+  This means that Svelte doesn't rely on a virtual DOM or a large runtime library, resulting in smaller bundle sizes and better performance.
+- **Key Features:**
+  - **Component-based:** Svelte uses a component-based architecture.
+  - **Compiler:** Svelte compiles your code to highly optimized JavaScript.
+  - **No Virtual DOM:** Svelte doesn't use a virtual DOM, resulting in better performance.
+  - **Simple Syntax:** Svelte has a simple and intuitive syntax.
+- **Use Cases:** Building high-performance web applications, interactive components, and websites where performance is critical.
+- **Learning Curve:** Relatively easy, especially for developers with HTML, CSS, and JavaScript experience.
+
+```html title="Example Svelte component"
+<script>
+  let name = "Svelte";
+</script>
+
+<h1>Hello, {name}!</h1>
+```
+
+## Choosing a Framework
+
+Choosing the right framework depends on the specific requirements of your project, your team's experience, and your personal preferences.
+Consider the following factors:
+
+- **Project Size and Complexity:** For small projects, a lightweight library like React or Vue.js might be sufficient.
+  For larger, more complex projects, a full-fledged framework like Angular might be a better choice.
+- **Performance Requirements:** If performance is critical, Svelte might be a good option.
+- **Learning Curve:** Consider the learning curve of each framework and choose one that your team can learn quickly.
+- **Community and Ecosystem:** Choose a framework with a large and active community and a vast ecosystem of libraries and tools.
+
+## Frameworks vs. Libraries
+
+It's important to understand the difference between a framework and a library:
+
+- **Library:** A library is a collection of pre-written code that you can use in your application.
+  You are in control of when and how the library is used.
+  React is technically a library.
+- **Framework:** A framework provides a structure and a set of rules that you must follow when building your application.
+  The framework is in control of the overall application flow.
+  Angular is a framework.
+
+## Take the Next Step
+
+JavaScript frameworks are powerful tools for building complex web applications.
+Experiment with different frameworks and find the one that best suits your needs and style.
+Learning a framework is a great way to take your web development skills to the next level.

@@ -1,0 +1,67 @@
+---
+title: Authorization
+description: Controlling Access to Resources
+---
+
+You've successfully authenticated a user, verifying their identity.
+Now, it's time to determine what that user is _allowed to do_.
+This is where **authorization** comes in.
+Authorization answers the question: "What are you allowed to access?"
+
+Think of authorization as checking your ticket at the entrance to a specific section of a concert venue.
+Just because you have a ticket doesn't mean you can access every area.
+
+## The Authorization Process
+
+After a user has been authenticated, the application needs to determine whether they have the necessary permissions to access a particular resource or perform a specific action.
+The authorization process typically involves the following steps:
+
+1.  **User Requests Access:** The user attempts to access a resource or perform an action (e.g., view a document, update a profile, delete a record).
+2.  **Server Checks Permissions:** The server checks the user's permissions to determine whether they are authorized to access the requested resource or perform the requested action.
+3.  **Access Granted or Denied:** Based on the user's permissions, the server either grants access to the resource or denies the request.
+
+## Common Authorization Models
+
+There are several common authorization models:
+
+- **Role-Based Access Control (RBAC):** A widely used authorization model that assigns permissions to roles and then assigns users to those roles.
+  - **Pros:** Simple to implement and manage.
+  - **Cons:** Can become complex to manage in large organizations with many roles and permissions.
+  - **Example:**
+    - Define roles such as "admin," "editor," and "viewer."
+    - Assign permissions to each role (e.g., "admin" can create, read, update, and delete resources; "editor" can read and update resources; "viewer" can only read resources).
+    - Assign users to roles based on their job function.
+- **Attribute-Based Access Control (ABAC):** A more flexible and granular authorization model that controls access based on attributes of the user, the resource, and the environment.
+  - **Pros:** Highly flexible and can be used to implement complex authorization policies.
+  - **Cons:** More complex to implement and manage than RBAC.
+  - **Example:**
+    - Allow access to a document only if the user's department is the same as the document's department, the user's security clearance is high enough, and the current time is within the document's validity period.
+- **Access Control Lists (ACLs):** A mechanism for granting or denying specific permissions to individual users or groups for specific resources.
+  - **Pros:** Provides fine-grained control over access to resources.
+  - **Cons:** Can be difficult to manage and scale, especially for large numbers of users and resources.
+  - **Example:**
+    - A file system that allows you to specify which users or groups have read, write, or execute permissions for each file or directory.
+
+## Implementing Authorization
+
+Here's a general outline of how to implement authorization in your back-end code:
+
+1.  **Retrieve User Information:** After authenticating the user, retrieve their roles, permissions, or attributes from the database or a session store.
+2.  **Check Permissions:** Based on the authorization model you're using, check whether the user has the necessary permissions to access the requested resource or perform the requested action.
+3.  **Grant or Deny Access:** If the user is authorized, grant access to the resource or allow the action to proceed.
+  Otherwise, deny the request and return an appropriate error message (e.g., 403 Forbidden).
+
+## Authorization and APIs
+
+When designing APIs, it's important to consider how authorization will be handled.
+Some common approaches include:
+
+- **API Keys:** Assign unique API keys to each client and require them to include the API key in every request.
+- **OAuth 2.0:** Use OAuth 2.0 to allow users to grant third-party applications limited access to their API resources.
+- **JWT (JSON Web Tokens):** Include user roles and permissions in the JWT and verify the JWT's signature and claims on every request.
+
+## Remember
+
+Authentication verifies _who_ a user is, while authorization verifies _what_ they are allowed to do.
+Choose an authorization model that matches your application's complexity and security needs.
+Implement authorization checks throughout your application, from APIs to database queries.

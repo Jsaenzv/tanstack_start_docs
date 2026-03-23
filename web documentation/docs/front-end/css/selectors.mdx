@@ -1,0 +1,182 @@
+---
+title: Selectors
+description: Targeting HTML Elements with Precision
+---
+
+You've learned that CSS is used to style HTML elements.
+But how do you tell CSS _which_ elements to style? That's where **selectors** come in.
+Selectors are patterns that match against HTML elements in your document, allowing you to target specific elements and apply styles to them.
+
+Think of selectors like search queries.
+They let you find the specific HTML elements you want to modify, whether it's all the paragraphs, just the headings with a certain class.
+
+## Basic Selectors
+
+Here are some of the most common and fundamental CSS selectors:
+
+- **Type Selectors (Element Selectors):** These select all elements of a specific type (tag name).
+
+```css
+p {
+  /* Styles for all paragraph elements */
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1 {
+  /* Styles for all h1 heading elements */
+  color: #333;
+  text-align: center;
+}
+```
+
+- **Class Selectors:** These select all elements that have a specific class attribute.
+  Class selectors start with a dot (`.`).
+
+```html
+<p class="highlight">This paragraph is highlighted.</p>
+<p>This paragraph is not.</p>
+```
+
+```css
+.highlight {
+  /* Styles for elements with the class "highlight" */
+  background-color: yellow;
+  font-weight: bold;
+}
+```
+
+- **ID Selectors:** These select a single element that has a specific `id` attribute.
+  ID selectors start with a hash symbol (`#`).
+  IDs should be unique within a document.
+
+```html
+<p id="introduction">This is the introduction paragraph.</p>
+```
+
+```css
+#introduction {
+  /* Styles for the element with the ID "introduction" */
+  font-style: italic;
+}
+```
+
+**Important:** While you _can_ use the same class on multiple elements, IDs _must_ be unique.
+
+## Combining Selectors
+
+You can combine selectors to target elements more precisely:
+
+- **Descendant Selectors:** These select elements that are descendants (children, grandchildren, etc.) of another element.
+  You separate the selectors with a space.
+
+```html
+<article>
+  <p>This paragraph is inside the article.</p>
+  <div>
+    <p>This paragraph is also inside the article.</p>
+  </div>
+</article>
+```
+
+```css
+article p {
+  /* Styles for all paragraph elements inside article elements */
+  color: green;
+}
+```
+
+- **Child Selectors:** These select elements that are _direct_ children of another element.
+  You use the greater-than sign (`>`).
+
+```html
+<article>
+  <p>This paragraph is a direct child of the article.</p>
+  <div>
+    <p>This paragraph is NOT a direct child of the article.</p>
+  </div>
+</article>
+```
+
+```css
+article > p {
+  /* Styles for paragraph elements that are DIRECT children of article elements */
+  font-weight: bold;
+}
+```
+
+## Attribute Selectors
+
+Attribute selectors allow you to target elements based on the presence or value of their attributes.
+
+- **Presence of an Attribute:**
+
+```html
+<a href="https://www.example.com">Link with href</a> <a>Link without href</a>
+```
+
+```css
+a[href] {
+  /* Styles for all a elements that have an href attribute */
+  color: orange;
+}
+```
+
+- **Specific Attribute Value:**
+
+```html
+<input type="text" name="username" /> <input type="email" name="email" />
+```
+
+```css
+input[type="text"] {
+  /* Styles for all input elements with type="text" */
+  border: 1px solid #ccc;
+}
+```
+
+## Pseudo-Classes
+
+Pseudo-classes are keywords added to selectors that specify a special state of the selected element(s).
+
+- **`:hover`:** Applies styles when the user hovers the mouse over an element.
+
+```css
+a:hover {
+  /* Styles for a elements when the mouse is hovering over them */
+  color: red;
+}
+```
+
+- **`:focus`:** Applies styles when the element has focus (e.g., when a user tabs to it).
+
+```css
+input:focus {
+  /* Styles for input elements when they have focus */
+  outline: none; /* Remove the default outline */
+  border: 2px solid blue;
+}
+```
+
+## Specificity: The Key to CSS Conflicts
+
+When multiple CSS rules apply to the same element, the browser needs to determine which rule takes precedence.
+This is determined by the _specificity_ of the selectors.
+
+Specificity is a complex topic, but here's the basic idea:
+
+1.  **Inline styles** have the highest specificity.
+2.  **ID selectors** have higher specificity than class selectors and attribute selectors.
+3.  **Class selectors**, **attribute selectors**, and **pseudo-classes** have higher specificity than type selectors.
+4.  **Type selectors** have the lowest specificity.
+5.  The `*` selector has no specificity.
+
+If two selectors have the same specificity, the one that appears later in the source code takes precedence.
+
+Understanding specificity is crucial for debugging CSS and ensuring that your styles are applied correctly.
+
+## Practice Makes Perfect
+
+Selectors are the foundation of CSS.
+The more you practice using them, the better you'll become at targeting the specific elements you want to style.
+Experiment with different selectors and combinations, and don't be afraid to consult the CSS documentation for more information.
